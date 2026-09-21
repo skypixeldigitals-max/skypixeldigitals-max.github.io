@@ -1,26 +1,175 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Tokens measured from Frame 34 */
+@theme {
+  --color-forest: #1b4235;
+  --color-forest-deep: #133026;
+  --color-gold: #c9a96e;
+  --color-gold-bright: #d9bd88;
+  /* Blue is brand, taken from the shield — not decoration. */
+  --color-blue: #3f72b7;
+  --color-blue-bright: #5a8ed4;
+  --color-blue-deep: #1a2942;
+  --color-navtint: #e3edf8;
+  --color-ink: #14231d;
+  --color-muted: #5c655f;
+  --color-paper: #f7f6f4;
+  --color-bone: #fbfaf8;
+  --color-rule: #e2e0dc;
+
+  --font-sans: var(--font-montserrat), system-ui, sans-serif;
+  --font-display: var(--font-display), Georgia, serif;
+  --font-accent: var(--font-accent), cursive;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/**
+ * Frame 34 is drawn at 1512px. Rather than pinning the page to that width —
+ * which forces a horizontal scrollbar on anything narrower and reads as
+ * "zoomed in" on a scaled display — the root font size is tied to the
+ * viewport. Every size below is expressed in rem, so the whole design scales
+ * proportionally: identical to the Figma at 1512px and above, and gracefully
+ * smaller down to 1024px. 16 / 1512 = 1.0582vw.
+ */
+html {
+  font-size: clamp(11px, 1.0582vw, 16px);
+  background: #ffffff;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-montserrat), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* 1512px at the design's root size */
+.shell {
+  width: 100%;
+  max-width: 94.5rem;
+  margin-inline: auto;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1ef;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-forest);
+  border-radius: 5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Design system. Six type steps, one spacing rhythm, one grid.
+   Sections use only these — no one-off values.
+   ------------------------------------------------------------------ */
+@theme {
+  --text-eyebrow: 0.75rem;   /* 12 — tracked caps labels */
+  --text-sm: 0.875rem;       /* 14 — meta, captions */
+  --text-body: 1rem;         /* 16 — all body copy */
+  --text-lead: 1.25rem;      /* 20 — intro paragraphs, card titles */
+  --text-title: 2rem;        /* 32 — sub-headings */
+  --text-display: 5.25rem;   /* 84 — section headings, ERA scale */
+}
+
+/* One horizontal frame for the whole page, so columns line up between
+   sections instead of each one inventing its own gutter. */
+.wrap {
+  width: 100%;
+  max-width: 82.5rem;
+  margin-inline: auto;
+  padding-inline: 2.5rem;
+}
+
+/* Three vertical rhythms only. */
+.section    { padding-block: 7.5rem; }   /* 120 — default */
+.section-lg { padding-block: 10rem; }    /* 160 — needs air */
+.section-sm { padding-block: 5rem; }     /* 80  — dense/utility */
+
+/* Consistent block openings: eyebrow → heading → rule. */
+.eyebrow {
+  font-size: var(--text-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+.h-display {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: var(--text-display);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+/* The single lowercase word inside a caps line — ERA's signature move. */
+.h-display .accent {
+  font-family: var(--font-accent), cursive;
+  font-size: 1.35em;
+  line-height: 0.8;
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 400;
+}
+.h-title {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: var(--text-title);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}
+.copy {
+  font-size: var(--text-body);
+  line-height: 1.75;
+  max-width: 34rem;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes dot-pulse {
+  0%   { transform: translate(-50%, -50%) scale(0.6); opacity: 0.9; }
+  70%  { transform: translate(-50%, -50%) scale(1.6); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(1.6); opacity: 0; }
+}
+
+/* ERA-style label swap: the text slides up and its twin slides in from below.
+   Markup: <span class="swap"><span>Label</span><span aria-hidden>Label</span></span> */
+.swap {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1.2;
+}
+.swap > span {
+  display: block;
+  transition: transform 0.32s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.swap > span + span {
+  position: absolute;
+  inset: 0;
+  transform: translateY(110%);
+}
+a:hover > .swap > span:first-child,
+button:hover > .swap > span:first-child { transform: translateY(-110%); }
+a:hover > .swap > span + span,
+button:hover > .swap > span + span     { transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .swap > span { transition: none; }
+  a:hover > .swap > span:first-child,
+  button:hover > .swap > span:first-child { transform: none; }
+  .swap > span + span { display: none; }
 }

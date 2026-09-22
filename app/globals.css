@@ -6,6 +6,10 @@
   --color-forest-deep: #133026;
   --color-gold: #c9a96e;
   --color-gold-bright: #d9bd88;
+  /* Gold for *text* on light grounds — the brand gold is 2.2:1 on bone. */
+  --color-gold-text: #866a33;
+  /* Blue for small text on forest — the brand blue-bright is only 3.3:1. */
+  --color-blue-soft: #a9c7ee;
   /* Blue is brand, taken from the shield — not decoration. */
   --color-blue: #3f72b7;
   --color-blue-bright: #5a8ed4;
@@ -33,6 +37,47 @@
 html {
   font-size: clamp(11px, 1.0582vw, 16px);
   background: #ffffff;
+  scroll-behavior: smooth;
+}
+/* Phones: the viewport-linked root would shrink body copy to 11px. Below
+   the tablet breakpoint the root is a fixed 16px and display sizes get
+   their own steps (see the bottom of this file). */
+@media (max-width: 767px) {
+  html { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* One focus ring for everything, brand gold, never removed. */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+[data-tone="light"] :focus-visible,
+.bg-bone :focus-visible,
+.bg-paper :focus-visible {
+  outline-color: var(--color-blue);
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  transform: translateY(-200%);
+  background: var(--color-blue);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+.skip-link:focus-visible {
+  transform: none;
+  outline-color: var(--color-gold);
 }
 
 body {
@@ -103,7 +148,18 @@ body {
   font-weight: 600;
   letter-spacing: 0.32em;
   text-transform: uppercase;
+  color: var(--color-gold-text);
+}
+/* On the green sections the brand gold reads at 5:1, so keep it there. */
+[data-tone="dark"] .eyebrow,
+.bg-forest .eyebrow,
+.bg-forest-deep .eyebrow {
   color: var(--color-gold);
+}
+/* The script accent inside a caps heading: brand gold on green, the deeper
+   text gold on bone/paper so it clears 3:1 for large text. */
+[data-tone="light"] .h-display .accent {
+  color: var(--color-gold-text);
 }
 .h-display {
   font-family: var(--font-display), Georgia, serif;
@@ -172,4 +228,18 @@ button:hover > .swap > span + span     { transform: translateY(0); }
   a:hover > .swap > span:first-child,
   button:hover > .swap > span:first-child { transform: none; }
   .swap > span + span { display: none; }
+}
+
+/* ------------------------------------------------------------------
+   Phone steps. The rem system scales the desktop design; below 768px the
+   root is 16px so these are the only sizes that need their own values.
+   ------------------------------------------------------------------ */
+@media (max-width: 767px) {
+  .h-display { font-size: 2.5rem; line-height: 1.08; }
+  .h-title   { font-size: 1.5rem; }
+  .wrap      { padding-inline: 1.25rem; }
+  .section    { padding-block: 4.5rem; }
+  .section-lg { padding-block: 5.5rem; }
+  .section-sm { padding-block: 3.5rem; }
+  .copy      { max-width: none; }
 }

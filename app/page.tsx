@@ -6,16 +6,17 @@ import ServiceDetail from "@/components/ServiceDetail";
 import { PlatformBar } from "@/components/Sections";
 import { Process, Team } from "@/components/ProcessTeam";
 import Locations from "@/components/Locations";
-import { Dashboard, AlaCarte, Contact, Footer } from "@/components/Closing";
+import { Dashboard, AlaCarte, Contact, Footer, Proof } from "@/components/Closing";
 
 export default function Home() {
   return (
     <>
       <Nav />
       <ScrollCounter />
-      <main>
+      <main id="main">
         <Hero />
         <VillaJourney />
+        <Proof />
         <Calculator />
         <PlatformBar />
         <ServiceDetail />

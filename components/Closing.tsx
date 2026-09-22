@@ -3,6 +3,7 @@
 import { sendEnquiry } from "@/lib/enquiry";
 import { useEffect, useRef, useState } from "react";
 import { dashboard, alaCarte, contact, brand, locations } from "@/lib/content";
+import { Labelled, WhatsAppFallback, WhatsAppIcon } from "@/components/Chrome";
 
 /** Fades a block up the first time it enters view. */
 function useReveal<T extends HTMLElement>(delay = 0) {
@@ -57,7 +58,7 @@ export function Dashboard() {
   return (
     <section data-chapter="08" data-tone="light" className="bg-bone">
       <div className="wrap section">
-        <div className="grid grid-cols-2 items-start gap-24">
+        <div className="grid grid-cols-2 items-start gap-24 max-md:grid-cols-1 max-md:gap-8">
           <Reveal>
             <span className="eyebrow">
               Full transparency
@@ -91,7 +92,7 @@ export function Dashboard() {
           </div>
         </Reveal>
 
-        <div className="mt-20 grid grid-cols-3 gap-x-14 gap-y-12">
+        <div className="mt-20 grid grid-cols-3 gap-x-14 gap-y-12 max-md:grid-cols-1 max-md:gap-y-8">
           {dashboard.features.map((f, i) => (
             <Reveal key={f.title} delay={i * 70}>
               <div className="border-t border-rule pt-6">
@@ -138,7 +139,9 @@ export function AlaCarte() {
     const lane = laneRef.current;
     if (!car || !lane) return;
 
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduced =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      window.matchMedia("(max-width: 767px)").matches; // no lane on phones
     if (reduced) {
       car.style.transform = "translateX(0)";
       car.style.opacity = "1";
@@ -186,7 +189,7 @@ export function AlaCarte() {
   return (
     <section data-chapter="09" data-tone="dark" className="overflow-hidden bg-forest">
       <div className="wrap pt-[7.5rem]">
-        <div className="flex items-end justify-between gap-16">
+        <div className="flex items-end justify-between gap-16 max-md:flex-col max-md:items-start max-md:gap-6">
           <Reveal>
             <span className="eyebrow">
               One-off services
@@ -203,7 +206,7 @@ export function AlaCarte() {
         </div>
       </div>
 
-      <div ref={laneRef} className="relative mt-12 h-[20rem]">
+      <div ref={laneRef} className="relative mt-12 h-[20rem] max-md:hidden">
         <img
           ref={carRef}
           src="/brand/car.png"
@@ -213,8 +216,8 @@ export function AlaCarte() {
         />
       </div>
 
-      <div className="wrap pb-[7.5rem]">
-        <div className="grid grid-cols-3 gap-x-12">
+      <div className="wrap pb-[7.5rem] max-md:pt-12 max-md:pb-20">
+        <div className="grid grid-cols-3 gap-x-12 max-md:grid-cols-1 max-md:gap-y-14">
           {alaCarte.items.map((item, i) => (
             <Reveal key={item.title} delay={i * 90}>
               <article className="group flex h-full flex-col">
@@ -235,9 +238,9 @@ export function AlaCarte() {
                 </p>
                 <a
                   href="#enquire"
-                  className="mt-8 inline-flex items-center gap-2 self-start text-[0.72rem] font-semibold tracking-[0.2em] text-gold uppercase transition group-hover:gap-4"
+                  className="mt-6 inline-flex min-h-11 items-center gap-2 self-start text-[0.72rem] font-semibold tracking-[0.2em] text-gold uppercase transition group-hover:gap-4"
                 >
-                  {item.cta}
+                  Ask about this
                   <span aria-hidden>→</span>
                 </a>
               </article>
@@ -256,11 +259,11 @@ export function Contact() {
   const [busy, setBusy] = useState(false);
 
   const field =
-    "h-14 w-full rounded-sm border border-forest/15 bg-white px-4 text-body text-ink transition placeholder:text-ink/35 focus:border-blue focus:outline-none";
+    "h-14 w-full rounded-sm border border-forest/15 bg-white px-4 text-body text-ink transition placeholder:text-ink/55 focus:border-blue";
 
   return (
     <section id="contact" data-chapter="10" data-tone="light" className="bg-paper">
-      <div className="wrap section grid grid-cols-2 gap-16">
+      <div className="wrap section grid grid-cols-2 gap-16 max-md:grid-cols-1 max-md:gap-12">
         <Reveal>
           <div>
             <h2 className="h-display text-forest">
@@ -271,17 +274,31 @@ export function Contact() {
             <p className="mt-8 max-w-[26rem] text-body leading-[1.75] text-muted">
               {contact.body}
             </p>
-            <dl className="mt-14 space-y-7">
+            <dl className="mt-14 space-y-7 max-md:mt-10">
               {[
-                ["Phone", brand.phone],
-                ["Email", brand.email],
-                ["Response time", brand.responseTime],
-              ].map(([k, v]) => (
+                ["Phone", brand.phone, brand.phoneHref],
+                ["WhatsApp", brand.phone, brand.whatsapp],
+                ["Email", brand.email, `mailto:${brand.email}`],
+                ["Response time", brand.responseTime, ""],
+              ].map(([k, v, href]) => (
                 <div key={k}>
                   <dt className="text-[0.68rem] font-semibold tracking-[0.24em] text-muted uppercase">
                     {k}
                   </dt>
-                  <dd className="mt-2 text-body text-forest">{v}</dd>
+                  <dd className="mt-2 text-body text-forest">
+                    {href ? (
+                      <a
+                        href={href}
+                        className="inline-flex min-h-8 items-center gap-2 underline-offset-4 hover:underline"
+                        {...(k === "WhatsApp" ? { target: "_blank", rel: "noopener" } : {})}
+                      >
+                        {k === "WhatsApp" && <WhatsAppIcon className="h-4 w-4" />}
+                        {v}
+                      </a>
+                    ) : (
+                      v
+                    )}
+                  </dd>
                 </div>
               ))}
             </dl>
@@ -309,27 +326,31 @@ export function Contact() {
                 setSent(true);
               }}
             >
-              <div className="grid grid-cols-2 gap-5">
-                <input name="name" required placeholder="Your name" className={field} />
-                <input
-                  name="contact"
-                  required
-                  placeholder="Phone or email"
-                  className={field}
-                />
+              <div className="grid grid-cols-2 gap-5 max-md:grid-cols-1">
+                <Labelled label="Your name" id="c-name" tone="light">
+                  <input id="c-name" name="name" autoComplete="name" required placeholder="Your name" className={field} />
+                </Labelled>
+                <Labelled label="Phone or email" id="c-contact" tone="light">
+                  <input id="c-contact" name="contact" autoComplete="tel" required placeholder="+94 77 000 0000" className={field} />
+                </Labelled>
               </div>
-              <select name="location" className={field}>
-                <option value="">Where is your property?</option>
-                {locations.map((l) => (
-                  <option key={l}>{l}</option>
-                ))}
-              </select>
-              <textarea
-                name="message"
-                rows={5}
-                placeholder="Tell us about your property"
-                className="w-full rounded-sm border border-forest/15 bg-white px-4 py-4 text-body text-ink transition placeholder:text-ink/35 focus:border-blue focus:outline-none"
-              />
+              <Labelled label="Where is your property?" id="c-loc" tone="light">
+                <select id="c-loc" name="location" className={field}>
+                  <option value="">Select…</option>
+                  {locations.map((l) => (
+                    <option key={l}>{l}</option>
+                  ))}
+                </select>
+              </Labelled>
+              <Labelled label="Tell us about it" id="c-msg" tone="light">
+                <textarea
+                  id="c-msg"
+                  name="message"
+                  rows={5}
+                  placeholder="Bedrooms, how it's run today, what you'd like to change"
+                  className="w-full rounded-sm border border-forest/15 bg-white px-4 py-4 text-body text-ink transition placeholder:text-ink/55 focus:border-blue"
+                />
+              </Labelled>
               <button
                 type="submit"
                 disabled={busy}
@@ -337,6 +358,7 @@ export function Contact() {
               >
                 {busy ? "Sending…" : contact.submitLabel}
               </button>
+              <WhatsAppFallback tone="light" />
             </form>
           )}
         </Reveal>
@@ -348,19 +370,88 @@ export function Contact() {
 /* ------------------------------------------------------------------ */
 
 export function Footer() {
+  const links: [string, string][] = [
+    ["#services", "What we do"],
+    ["#locations", "Where we work"],
+    ["#team", "Who we are"],
+    ["#enquire", "Get an estimate"],
+    ["/dashboard", "Owner dashboard"],
+  ];
   return (
-    <footer className="bg-forest-deep">
-      <div className="wrap flex items-center justify-between py-[3.5rem]">
-        <img
-          src="/brand/logo-shield.png"
-          alt="Leona Properties"
-          className="h-10 w-auto brightness-0 invert"
-        />
-        <p className="text-[0.85rem] text-white/45">
-          © {new Date().getFullYear()} Leona Group (Pvt) Ltd. All rights
-          reserved.
-        </p>
+    <footer className="bg-forest-deep max-md:pb-24">
+      <div className="wrap grid grid-cols-[auto_1fr_auto] items-start gap-16 py-[3.5rem] max-md:grid-cols-1 max-md:gap-10">
+        <div>
+          <img src="/brand/logo-shield.png" alt="Leona Properties" className="h-10 w-auto brightness-0 invert" />
+          <p className="mt-5 max-w-[16rem] text-sm leading-[1.7] text-white/55">
+            Villa care on Sri Lanka&apos;s south coast. Powering Ceylon stays.
+          </p>
+        </div>
+        <nav aria-label="Footer" className="grid grid-cols-2 gap-x-10 max-md:grid-cols-1">
+          {links.map(([href, label]) => (
+            <a key={href} href={href} className="inline-flex min-h-9 items-center text-sm text-white/70 transition-colors hover:text-white">
+              {label}
+            </a>
+          ))}
+        </nav>
+        <div className="text-sm text-white/70">
+          <a href={brand.phoneHref} className="inline-flex min-h-9 items-center hover:text-white">{brand.phone}</a>
+          <br />
+          <a href={`mailto:${brand.email}`} className="inline-flex min-h-9 items-center hover:text-white">{brand.email}</a>
+          <br />
+          <a href={brand.whatsapp} target="_blank" rel="noopener" className="inline-flex min-h-9 items-center gap-2 hover:text-white">
+            <WhatsAppIcon className="h-4 w-4" /> WhatsApp
+          </a>
+        </div>
+      </div>
+      <div className="wrap border-t border-white/10 py-6 text-[0.8rem] text-white/45">
+        © {new Date().getFullYear()} Leona Group (Pvt) Ltd. All rights reserved.
       </div>
     </footer>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+
+/**
+ * Proof. Off until there are real numbers — the placeholders are obvious on
+ * purpose so nothing invented can ship by accident. Flip SHOW_PROOF and
+ * replace the values when a case study or an owner quote exists.
+ */
+export const SHOW_PROOF = false;
+
+export function Proof() {
+  if (!SHOW_PROOF) return null;
+  const stats: [string, string][] = [
+    ["XX%", "occupancy after 6 months"],
+    ["LKR XX,XXX", "average nightly rate"],
+    ["X.X", "guest review score"],
+  ];
+  return (
+    <section data-chapter="02" data-tone="light" className="bg-bone">
+      <div className="wrap section grid grid-cols-[1fr_1.1fr] gap-20 max-md:grid-cols-1 max-md:gap-10">
+        <div>
+          <span className="eyebrow">Villa E32 · Ahangama</span>
+          <h2 className="h-display mt-6 text-forest">
+            What changed
+            <br />
+            <span className="accent text-gold">in six months</span>
+          </h2>
+          <dl className="mt-12 grid grid-cols-3 gap-6 max-md:grid-cols-1">
+            {stats.map(([v, l]) => (
+              <div key={l} className="border-t border-rule pt-5">
+                <dd className="font-display text-[2.4rem] leading-none text-forest tabular-nums">{v}</dd>
+                <dt className="mt-3 text-sm text-muted">{l}</dt>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <blockquote className="border-l-2 border-gold pl-8 max-md:pl-6">
+          <p className="font-display text-[1.6rem] leading-[1.35] text-forest">
+            &ldquo;Owner quote goes here — one or two sentences in their own words.&rdquo;
+          </p>
+          <footer className="mt-6 text-sm text-muted">Owner name, Villa E32</footer>
+        </blockquote>
+      </div>
+    </section>
   );
 }

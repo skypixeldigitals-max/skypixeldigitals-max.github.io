@@ -3,9 +3,9 @@
 import { useEffect, useRef } from "react";
 import { services, stats } from "@/lib/content";
 
-const TOTAL_FRAMES = 121;
-const framePath = (i: number) =>
-  `/frames/journey/${String(i + 1).padStart(4, "0")}.webp`;
+const TOTAL_FRAMES = 61;
+const framePath = (i: number, mobile: boolean) =>
+  `/frames/${mobile ? "journey-m" : "journey"}/${String(i + 1).padStart(4, "0")}.webp`;
 
 /** Frames finish here; the rest of the scroll holds on the interior. */
 const FRAME_END = 0.86;
@@ -43,6 +43,7 @@ export default function VillaJourney() {
     if (!canvas || !wrap) return;
     const ctx = canvas.getContext("2d", { alpha: false });
     if (!ctx) return;
+    const mobile = window.matchMedia("(max-width: 767px)").matches;
 
     const images: (HTMLImageElement | null)[] = new Array(TOTAL_FRAMES).fill(
       null,
@@ -60,10 +61,15 @@ export default function VillaJourney() {
           resolve();
         };
         img.onerror = () => resolve();
-        img.src = framePath(i);
+        img.src = framePath(i, mobile);
       });
 
-    (async () => {
+    // Not a byte of film is fetched until the section is within one
+    // viewport of the fold — the hero owns the first paint.
+    let started = false;
+    const start = async () => {
+      if (started) return;
+      started = true;
       await loadOne(0);
       if (disposed) return;
       ready = true;
@@ -71,11 +77,16 @@ export default function VillaJourney() {
       render();
       let next = 1;
       await Promise.all(
-        Array.from({ length: 6 }, async () => {
+        Array.from({ length: 4 }, async () => {
           while (next < TOTAL_FRAMES && !disposed) await loadOne(next++);
         }),
       );
-    })();
+    };
+    const io = new IntersectionObserver(
+      (entries) => entries.some((e) => e.isIntersecting) && (start(), io.disconnect()),
+      { rootMargin: "50% 0px" },
+    );
+    io.observe(wrap);
 
     const dpr = () => Math.min(window.devicePixelRatio || 1, 2);
 
@@ -158,6 +169,7 @@ export default function VillaJourney() {
     window.addEventListener("resize", onScroll);
     return () => {
       disposed = true;
+      io.disconnect();
       cancelAnimationFrame(raf);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
@@ -165,7 +177,7 @@ export default function VillaJourney() {
   }, []);
 
   return (
-    <section ref={wrapRef} data-chapter="01" data-tone="dark" className="relative" style={{ height: "600vh" }}>
+    <section ref={wrapRef} data-chapter="01" data-tone="dark" className="relative h-[600vh] max-md:h-[320vh]">
       <div className="sticky top-0 h-screen overflow-hidden bg-forest-deep">
         <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
 
@@ -200,13 +212,13 @@ export default function VillaJourney() {
               LEONA PROPERTIES
             </span>
           </div>
-          <h1 className="h-display mt-9 max-w-[70rem] text-[7rem] text-white">
+          <h2 className="h-display mt-9 max-w-[70rem] text-[7rem] text-white max-md:text-[2.6rem]">
             Sri Lanka&apos;s
             <br />
             <span className="accent text-gold">property care</span>
             <br />
             Specialists
-          </h1>
+          </h2>
           <div className="mt-10 h-px w-24 bg-gradient-to-r from-blue-bright via-gold to-blue-bright" />
         </div>
 
@@ -220,6 +232,14 @@ export default function VillaJourney() {
           <span className="h-10 w-px bg-gradient-to-b from-gold to-transparent" />
         </div>
 
+        {/* Owners who came for a number shouldn't have to sit through the film. */}
+        <a
+          href="#enquire"
+          className="absolute right-[3.5vw] bottom-8 z-10 inline-flex min-h-11 items-center gap-2 text-[0.68rem] font-semibold tracking-[0.3em] text-white/70 uppercase transition-colors hover:text-white max-md:right-5"
+        >
+          Skip the tour <span aria-hidden>↓</span>
+        </a>
+
         {/* ---- the four services ---- */}
         {services.map((s, i) => (
           <div
@@ -229,14 +249,14 @@ export default function VillaJourney() {
             }}
             className="absolute inset-0 flex items-center opacity-0"
           >
-            <div className="w-full px-[8vw]">
+            <div className="w-full px-[8vw] max-md:px-6">
               <div className="max-w-[34rem]">
                 <span className="text-[0.72rem] font-semibold tracking-[0.4em] text-gold">
                   {s.number} — {s.title.toUpperCase()}
                 </span>
-                <h2 className="mt-6 text-[3.1rem] leading-[1.1] font-semibold tracking-[-0.015em] text-white">
+                <h3 className="mt-6 text-[3.1rem] leading-[1.1] font-semibold tracking-[-0.015em] text-white max-md:text-[1.9rem]">
                   {s.title}
-                </h2>
+                </h3>
                 <div className="mt-7 h-px w-14 bg-gold/60" />
                 <p className="mt-7 text-[1.06rem] leading-[1.72] text-white/85">
                   {s.body}
@@ -251,14 +271,14 @@ export default function VillaJourney() {
           ref={statsRef}
           className="absolute inset-0 flex items-center justify-center bg-forest-deep/60 px-8 opacity-0"
         >
-          <div className="flex w-full max-w-[62rem] justify-between">
+          <div className="flex w-full max-w-[62rem] justify-between max-md:flex-col max-md:gap-10">
             {stats.map((s) => (
               <div key={s.label} className="text-center">
-                <div className="text-[4.6rem] leading-none font-semibold text-gold">
+                <div className="text-[4.6rem] leading-none font-semibold text-gold max-md:text-[3rem]">
                   {s.value}
                 </div>
                 <div className="mx-auto mt-5 h-px w-10 bg-white/25" />
-                <div className="mt-5 max-w-[11rem] text-[0.78rem] leading-[1.6] font-medium tracking-[0.18em] text-white uppercase">
+                <div className="mx-auto mt-5 max-w-[11rem] text-[0.78rem] leading-[1.6] font-medium tracking-[0.18em] text-white uppercase">
                   {s.label}
                 </div>
               </div>

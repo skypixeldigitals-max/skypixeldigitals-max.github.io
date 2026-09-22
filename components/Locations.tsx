@@ -13,7 +13,7 @@ export default function Locations() {
       id="locations"
       data-chapter="05"
       data-tone="dark"
-      className="relative h-screen min-h-[48rem] overflow-hidden bg-forest-deep"
+      className="relative h-screen min-h-[48rem] overflow-hidden bg-forest-deep max-md:h-auto max-md:min-h-[100svh]"
     >
       <img
         src="/brand/aerial.webp"
@@ -24,9 +24,9 @@ export default function Locations() {
       />
       {/* Scrims: a foot for the heading, a right-hand column for the list. */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-forest-deep/80 via-forest-deep/25 to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-[45%] bg-gradient-to-l from-forest-deep/70 via-forest-deep/20 to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-[45%] bg-gradient-to-l from-forest-deep/70 via-forest-deep/20 to-transparent max-md:inset-x-0 max-md:w-auto max-md:bg-none max-md:bg-forest-deep/55" />
 
-      <div className="wrap relative flex h-full items-end justify-between gap-16 pb-14 text-white">
+      <div className="wrap relative flex h-full items-end justify-between gap-16 pb-14 text-white max-md:min-h-[100svh] max-md:flex-col max-md:items-start max-md:justify-end max-md:gap-10 max-md:pt-32 max-md:pb-32">
         <div>
           <span className="eyebrow">Where we work</span>
           <h2 className="h-display mt-6">
@@ -40,7 +40,7 @@ export default function Locations() {
           </p>
         </div>
 
-        <ol className="w-[22rem] shrink-0 pb-2">
+        <ol className="w-[22rem] shrink-0 pb-2 max-md:w-full">
           {PLACES.map((place, i) => (
             <li
               key={place}

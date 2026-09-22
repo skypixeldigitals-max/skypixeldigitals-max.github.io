@@ -42,7 +42,7 @@ export default function ServiceDetail() {
   return (
     <section id="services" data-chapter="04" data-tone="light" className="bg-bone">
       <div className="wrap section">
-        <div className="flex items-end justify-between gap-16">
+        <div className="flex items-end justify-between gap-16 max-md:flex-col max-md:items-start max-md:gap-6">
           <div>
             <span className="eyebrow">What we do</span>
             <h2 className="h-display mt-6 text-forest">
@@ -51,12 +51,12 @@ export default function ServiceDetail() {
               <span className="accent text-gold">done properly</span>
             </h2>
           </div>
-          <p className="copy max-w-[22rem] pb-3 text-muted">
+          <p className="copy max-w-[22rem] pb-3 text-muted max-md:pb-0">
             Every villa we take on gets all four. Most owners only ever had one.
           </p>
         </div>
 
-        <ol className="mt-24">
+        <ol className="mt-24 max-md:mt-12">
           {services.map((s, i) => {
             const [pre, script] = ACCENT[s.title] ?? [s.title, ""];
             return (
@@ -66,17 +66,17 @@ export default function ServiceDetail() {
                 ref={(el) => {
                   rows.current[i] = el;
                 }}
-                className="group grid scroll-mt-32 grid-cols-[6rem_1fr_1.3fr] items-start gap-10 border-t border-rule py-14 transition-[opacity,transform] duration-700 ease-out last:border-b"
+                className="group grid scroll-mt-32 grid-cols-[6rem_1fr_1.3fr] items-start gap-10 border-t border-rule py-14 max-md:grid-cols-1 max-md:gap-4 max-md:py-10 transition-[opacity,transform] duration-700 ease-out last:border-b"
                 style={{
                   opacity: 0,
                   transform: "translateY(24px)",
                   transitionDelay: `${i * 60}ms`,
                 }}
               >
-                <span className="pt-2 font-display text-[2rem] leading-none text-gold/70 tabular-nums">
+                <span className="pt-2 font-display text-[2rem] leading-none text-gold-text tabular-nums max-md:text-[1.4rem]">
                   {s.number}
                 </span>
-                <h3 className="h-display text-[2.6rem] text-forest">
+                <h3 className="h-display text-[2.6rem] text-forest max-md:text-[2rem]">
                   {pre}
                   {script && (
                     <>
@@ -89,7 +89,7 @@ export default function ServiceDetail() {
                   <p className="copy text-muted">{s.body}</p>
                   <a
                     href="#enquire"
-                    className="mt-7 inline-flex items-center gap-2 text-eyebrow font-semibold tracking-[0.22em] text-blue uppercase transition-[gap,color] duration-200 hover:gap-4 hover:text-blue-bright"
+                    className="mt-5 inline-flex min-h-11 items-center gap-2 text-eyebrow font-semibold tracking-[0.22em] text-blue uppercase transition-[gap,color] duration-200 hover:gap-4 hover:text-blue-bright"
                   >
                     Ask about this
                     <span aria-hidden>→</span>

@@ -33,8 +33,8 @@ export function Poolside() {
 export function PlatformBar() {
   return (
     <section className="bg-forest">
-      <div className="shell flex h-[5rem] items-center justify-between px-[4.875rem]">
-        <div className="flex items-center gap-[2.625rem]">
+      <div className="shell flex h-[5rem] items-center justify-between px-[4.875rem] max-md:h-auto max-md:flex-wrap max-md:justify-center max-md:gap-6 max-md:px-5 max-md:py-6">
+        <div className="flex items-center gap-[2.625rem] max-md:gap-6">
           <img
             src={platforms[0].src}
             alt={platforms[0].name}
@@ -46,7 +46,7 @@ export function PlatformBar() {
             className="h-[2.125rem] w-auto object-contain brightness-0 invert"
           />
         </div>
-        <div className="flex items-center gap-[2.5rem]">
+        <div className="flex items-center gap-[2.5rem] max-md:gap-6">
           <img
             src={platforms[2].src}
             alt={platforms[2].name}

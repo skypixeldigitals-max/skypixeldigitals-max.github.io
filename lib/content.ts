@@ -6,8 +6,12 @@
 
 export const brand = {
   name: "Leona Properties",
-  phone: "+94 XX XXX XXXX",
-  email: "hello@leonavill.lk",
+  phone: "+94 74 059 1853",
+  phoneHref: "tel:+94740591853",
+  whatsapp:
+    "https://wa.me/94740591853?text=" +
+    encodeURIComponent("Hi Leona, I own a villa in "),
+  email: "leonaproperties1@gmail.com",
   responseTime: "Within 24 hours — usually faster",
 };
 

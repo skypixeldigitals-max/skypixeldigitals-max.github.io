@@ -8,14 +8,14 @@ import { process, processSection, team } from "@/lib/content";
 export function Process() {
   return (
     <section data-chapter="06" data-tone="dark" className="bg-forest">
-      <div className="grid grid-cols-[52.4%_1fr] items-stretch">
+      <div className="grid grid-cols-[52.4%_1fr] items-stretch max-md:grid-cols-1">
         <img
           src="/brand/process-bw.png"
           alt="A Leona designer reviewing plans on site during a villa fit-out"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover max-md:h-[70vw]"
         />
 
-        <div className="flex flex-col justify-center px-16 py-[7.5rem]">
+        <div className="flex flex-col justify-center px-16 py-[7.5rem] max-md:px-5 max-md:py-16">
           <span className="eyebrow">{processSection.kicker}</span>
           <h2 className="h-display mt-6 text-white">
             We don&apos;t just design
@@ -60,25 +60,25 @@ export function Team() {
   return (
     <section id="team" data-chapter="07" data-tone="dark" className="bg-forest">
       <div className="wrap section">
-        <div className="grid grid-cols-[auto_1fr] items-start gap-20">
+        <div className="grid grid-cols-[auto_1fr] items-start gap-20 max-md:grid-cols-1 max-md:gap-8">
           <h2 className="h-display text-white">
             Two siblings.
             <br />
             <span className="accent text-gold">one</span> goal.
           </h2>
-          <p className="border-l border-blue/40 pt-2 pl-10 text-body leading-[1.75] text-white/70">
+          <p className="border-l border-blue/40 pt-2 pl-10 text-body leading-[1.75] text-white/70 max-md:pl-5">
             {team.story}
           </p>
         </div>
 
-        <div className="mt-24 grid grid-cols-4 gap-x-10">
+        <div className="mt-24 grid grid-cols-4 gap-x-10 max-md:mt-14 max-md:grid-cols-2 max-md:gap-x-5 max-md:gap-y-12">
           {team.members.map((m) => {
             const [name, role] = m.name.split(" - ").map((s) => s.trim());
             return (
               <article key={m.name} className="group">
                 {/* Monochrome cutouts on the section green, bottom-anchored
                     in a fixed box so the four heads sit on one baseline. */}
-                <div className="relative h-[22rem] overflow-hidden">
+                <div className="relative h-[22rem] overflow-hidden max-md:h-[13rem]">
                   {/* Hover: a brand-blue glow rises from the floor behind the
                       figure and the figure lifts a touch. Transform/opacity only. */}
                   <div
@@ -99,7 +99,7 @@ export function Team() {
                 <h3 className="mt-7 text-lead font-semibold text-white transition-colors duration-300 group-hover:text-blue-bright">
                   {name}
                 </h3>
-                <p className="mt-1 text-[0.72rem] font-semibold tracking-[0.2em] text-blue-bright uppercase">
+                <p className="mt-1 text-[0.72rem] font-semibold tracking-[0.2em] text-blue-soft uppercase">
                   {role}
                 </p>
                 <span className="mt-5 block h-px w-8 bg-gold/50 transition-all duration-300 group-hover:w-14" />

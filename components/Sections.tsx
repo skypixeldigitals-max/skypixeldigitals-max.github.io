@@ -9,7 +9,9 @@ export function Poolside() {
   return (
     <section className="shell relative aspect-[1512/1328] overflow-hidden">
       <img
-        src="/brand/poolside-band.jpg"
+        loading="lazy"
+        decoding="async"
+        src="/brand/poolside-band.webp"
         alt="A Leona host carrying drinks past the pool at a managed villa"
         className="absolute inset-0 h-full w-full object-cover"
       />
@@ -36,11 +38,15 @@ export function PlatformBar() {
       <div className="shell flex h-[5rem] items-center justify-between px-[4.875rem] max-md:h-auto max-md:flex-wrap max-md:justify-center max-md:gap-6 max-md:px-5 max-md:py-6">
         <div className="flex items-center gap-[2.625rem] max-md:gap-6">
           <img
+            loading="lazy"
+            decoding="async"
             src={platforms[0].src}
             alt={platforms[0].name}
             className="h-[2.875rem] w-auto object-contain brightness-0 invert"
           />
           <img
+            loading="lazy"
+            decoding="async"
             src={platforms[1].src}
             alt={platforms[1].name}
             className="h-[2.125rem] w-auto object-contain brightness-0 invert"
@@ -48,11 +54,15 @@ export function PlatformBar() {
         </div>
         <div className="flex items-center gap-[2.5rem] max-md:gap-6">
           <img
+            loading="lazy"
+            decoding="async"
             src={platforms[2].src}
             alt={platforms[2].name}
             className="h-[2.625rem] w-auto object-contain brightness-0 invert"
           />
           <img
+            loading="lazy"
+            decoding="async"
             src={platforms[3].src}
             alt={platforms[3].name}
             className="h-[2.375rem] w-auto object-contain brightness-0 invert"

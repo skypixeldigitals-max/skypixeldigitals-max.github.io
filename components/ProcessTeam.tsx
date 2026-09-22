@@ -10,7 +10,9 @@ export function Process() {
     <section data-chapter="06" data-tone="dark" className="bg-forest">
       <div className="grid grid-cols-[52.4%_1fr] items-stretch max-md:grid-cols-1">
         <img
-          src="/brand/process-bw.png"
+          loading="lazy"
+          decoding="async"
+          src="/brand/process-bw.webp"
           alt="A Leona designer reviewing plans on site during a villa fit-out"
           className="h-full w-full object-cover max-md:h-[70vw]"
         />
@@ -31,7 +33,7 @@ export function Process() {
           <ol className="mt-12 space-y-5">
             {process.steps.map((s) => (
               <li key={s.number} className="group flex gap-6">
-                <span className="w-12 shrink-0 pt-1 text-lead font-semibold text-gold/70 tabular-nums">
+                <span className="w-12 shrink-0 pt-1 text-lead font-semibold text-gold tabular-nums">
                   {s.number}
                 </span>
                 <div className="border-t border-white/15 pt-4 transition-colors group-hover:border-gold">
@@ -90,6 +92,8 @@ export function Team() {
                     }}
                   />
                   <img
+                    loading="lazy"
+                    decoding="async"
                     src={m.img}
                     alt={name}
                     className="absolute bottom-0 left-1/2 h-full max-w-none -translate-x-1/2 object-contain object-bottom transition-transform duration-500 ease-out group-hover:-translate-y-2 group-hover:scale-[1.03]"

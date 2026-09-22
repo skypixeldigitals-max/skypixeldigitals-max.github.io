@@ -269,7 +269,8 @@ export default function Hero() {
         {/* ---- phone sheet for the open hotspot ---- */}
         <div
           role="dialog"
-          aria-label={current ? services[current.service].title : undefined}
+          aria-label={current ? services[current.service].title : "Service details"}
+          aria-hidden={!current}
           onClick={(e) => e.stopPropagation()}
           className={`absolute inset-x-4 bottom-4 z-10 rounded-sm bg-blue-deep/85 p-5 text-white backdrop-blur-sm transition-[transform,opacity] duration-300 ease-out md:hidden ${
             current ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"

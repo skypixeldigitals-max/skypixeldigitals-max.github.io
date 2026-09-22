@@ -29,10 +29,10 @@ export const stats = [
 ];
 
 export const platforms = [
-  { name: "agoda", src: "/brand/platform-agoda.png" },
-  { name: "Booking.com", src: "/brand/platform-booking.png" },
-  { name: "tripadvisor", src: "/brand/platform-tripadvisor.png" },
-  { name: "airbnb", src: "/brand/platform-airbnb.png" },
+  { name: "agoda", src: "/brand/platform-agoda.webp" },
+  { name: "Booking.com", src: "/brand/platform-booking.webp" },
+  { name: "tripadvisor", src: "/brand/platform-tripadvisor.webp" },
+  { name: "airbnb", src: "/brand/platform-airbnb.webp" },
 ];
 
 /**
@@ -224,7 +224,7 @@ export const team = {
     {
       name: "Devike - Co-Founder",
       bio: "Interior designer with years of industry experience.",
-      img: "/brand/p-devike.png",
+      img: "/brand/p-devike.webp",
       // left / width / bio-block offsets as drawn in Frame 34
       left: "6.25rem",
       width: "18.75rem",
@@ -235,7 +235,7 @@ export const team = {
     {
       name: "Dhammika - Technical Consultant",
       bio: "Brings over 20+ years of industry experience in property maintenance strategy. Former chief engineer to luxury Mandarin Oriental hotel groups in the UAE.",
-      img: "/brand/p-dhammika.png",
+      img: "/brand/p-dhammika.webp",
       left: "26.5rem",
       width: "21.5rem",
       labelTop: "24.2rem",
@@ -245,7 +245,7 @@ export const team = {
     {
       name: "Thareen - Hospitality Specialist",
       bio: "A national-level barista specialist and consultant in speciality coffee with deep roots in premium guest experience.",
-      img: "/brand/p-thareen.png",
+      img: "/brand/p-thareen.webp",
       left: "52.8rem",
       width: "18.4rem",
       labelTop: "24.9rem",
@@ -255,7 +255,7 @@ export const team = {
     {
       name: "Devangi - Co-Founder",
       bio: "Project manager and content marketer with 4+ years of experience.",
-      img: "/brand/p-devangi.png",
+      img: "/brand/p-devangi.webp",
       left: "71.5rem",
       width: "20.9rem",
       labelTop: "20rem",

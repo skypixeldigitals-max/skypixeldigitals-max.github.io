@@ -56,7 +56,7 @@ export function Nav() {
       {/* ---- rotating round logo, top-left (ERA's mark) ---- */}
       <a
         href="#top"
-        aria-label="Leona Properties — back to top"
+        aria-label="Leona Properties · Leona Properties · back to top"
         className="pointer-events-auto absolute top-8 left-[3.5vw] z-10 grid h-[6.5rem] w-[6.5rem] place-items-center max-md:top-4 max-md:left-4 max-md:h-16 max-md:w-16"
       >
         <svg
@@ -71,7 +71,7 @@ export function Nav() {
             <textPath href="#ring">LEONA PROPERTIES · LEONA PROPERTIES ·</textPath>
           </text>
         </svg>
-        <img src="/brand/logo-shield.png" alt="" className="relative h-[2.1rem] w-auto brightness-0 invert max-md:h-5" />
+        <img src="/brand/logo-shield.webp" alt="" className="relative h-[2.1rem] w-auto brightness-0 invert max-md:h-5" />
       </a>
 
       {/* ---- top-right: serif primary, tracked secondaries ---- */}

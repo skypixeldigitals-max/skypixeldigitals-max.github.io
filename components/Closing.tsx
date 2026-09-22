@@ -85,7 +85,9 @@ export function Dashboard() {
         <Reveal delay={180}>
           <div className="mt-20 overflow-hidden rounded-lg border border-rule shadow-[0_24px_60px_-24px_rgba(20,35,29,0.25)]">
             <img
-              src="/brand/dashboard-mock.png"
+              loading="lazy"
+              decoding="async"
+              src="/brand/dashboard-mock.webp"
               alt="The Leona owner dashboard showing revenue, occupancy, upcoming bookings and maintenance"
               className="w-full"
             />
@@ -209,7 +211,7 @@ export function AlaCarte() {
       <div ref={laneRef} className="relative mt-12 h-[20rem] max-md:hidden">
         <img
           ref={carRef}
-          src="/brand/car.png"
+          src="/brand/car.webp"
           alt="A Leona Properties branded vehicle"
           className="absolute right-[6vw] bottom-0 w-[46rem] max-w-none"
           style={{ opacity: 0, transform: "translateX(68vw)" }}
@@ -223,6 +225,8 @@ export function AlaCarte() {
               <article className="group flex h-full flex-col">
                 <div className="relative mb-7 aspect-[4/3] overflow-hidden rounded-sm bg-forest-deep">
                   <img
+                    loading="lazy"
+                    decoding="async"
                     src={ALACARTE_ART[i]}
                     alt=""
                     className={`h-full w-full transition-transform duration-700 group-hover:scale-[1.04] ${
@@ -381,7 +385,7 @@ export function Footer() {
     <footer className="bg-forest-deep max-md:pb-24">
       <div className="wrap grid grid-cols-[auto_1fr_auto] items-start gap-16 py-[3.5rem] max-md:grid-cols-1 max-md:gap-10">
         <div>
-          <img src="/brand/logo-shield.png" alt="Leona Properties" className="h-10 w-auto brightness-0 invert" />
+          <img loading="lazy" src="/brand/logo-shield.webp" alt="Leona Properties" className="h-10 w-auto brightness-0 invert" />
           <p className="mt-5 max-w-[16rem] text-sm leading-[1.7] text-white/55">
             Villa care on Sri Lanka&apos;s south coast. Powering Ceylon stays.
           </p>
@@ -403,7 +407,7 @@ export function Footer() {
           </a>
         </div>
       </div>
-      <div className="wrap border-t border-white/10 py-6 text-[0.8rem] text-white/45">
+      <div className="wrap border-t border-white/10 py-6 text-[0.8rem] text-white/60">
         © {new Date().getFullYear()} Leona Group (Pvt) Ltd. All rights reserved.
       </div>
     </footer>

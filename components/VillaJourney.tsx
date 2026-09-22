@@ -191,7 +191,7 @@ export default function VillaJourney() {
           className="absolute inset-0 z-20 flex items-center justify-center bg-forest-deep transition-opacity duration-1000"
         >
           <img
-            src="/brand/logo-shield.png"
+            src="/brand/logo-shield.webp"
             alt=""
             className="h-14 w-auto animate-pulse brightness-0 invert"
           />
@@ -204,7 +204,7 @@ export default function VillaJourney() {
         >
           <div className="flex items-center gap-4">
             <img
-              src="/brand/logo-shield.png"
+              src="/brand/logo-shield.webp"
               alt=""
               className="h-9 w-auto brightness-0 invert"
             />

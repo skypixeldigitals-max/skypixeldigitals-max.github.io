@@ -12,7 +12,7 @@ export default function Dashboard() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-forest px-6 text-center">
       <img
-        src="/brand/logo-shield.png"
+        src="/brand/logo-shield.webp"
         alt=""
         className="h-14 w-auto brightness-0 invert"
       />

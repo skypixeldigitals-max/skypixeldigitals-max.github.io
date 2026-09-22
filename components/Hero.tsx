@@ -249,7 +249,7 @@ export default function Hero() {
             <span className="block">{establishing.title[0]}</span>
             <span className="block text-[0.72em]">{establishing.title[1]}</span>
           </h1>
-          <span className="font-accent -mt-[0.18em] text-[4.4rem] leading-none text-gold drop-shadow-[0_2px_16px_rgba(0,30,70,0.35)]">
+          <span className="font-accent -mt-[0.12em] text-[3.6rem] leading-none whitespace-nowrap text-gold drop-shadow-[0_2px_16px_rgba(0,30,70,0.35)]">
             {establishing.script}
           </span>
 

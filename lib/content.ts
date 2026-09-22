@@ -324,7 +324,7 @@ export const locations = [
 export const establishing = {
   /** Title stack, ERA-style: two caps lines and a script line. */
   title: ["Leona", "Properties"],
-  script: "Sri Lanka",
+  script: "Powering Ceylon Stays",
   /** The split line beneath, with a rule between. */
   strap: ["A villa", "properly cared for"],
   cta: "Get an estimate",

@@ -235,7 +235,7 @@ export const team = {
     {
       name: "Dhammika - Technical Consultant",
       bio: "Brings over 20+ years of industry experience in property maintenance strategy. Former chief engineer to luxury Mandarin Oriental hotel groups in the UAE.",
-      img: "/brand/p-dhammika.webp",
+      img: "/brand/p-dhammika-v3.webp",
       left: "26.5rem",
       width: "21.5rem",
       labelTop: "24.2rem",
@@ -245,7 +245,7 @@ export const team = {
     {
       name: "Thareen - Hospitality Specialist",
       bio: "A national-level barista specialist and consultant in speciality coffee with deep roots in premium guest experience.",
-      img: "/brand/p-thareen-v5.webp",
+      img: "/brand/p-thareen-v6.webp",
       left: "52.8rem",
       width: "18.4rem",
       labelTop: "24.9rem",
@@ -255,7 +255,7 @@ export const team = {
     {
       name: "Devangi - Co-Founder",
       bio: "Project manager and content marketer with 4+ years of experience.",
-      img: "/brand/p-devangi.webp",
+      img: "/brand/p-devangi-v2.webp",
       left: "71.5rem",
       width: "20.9rem",
       labelTop: "20rem",

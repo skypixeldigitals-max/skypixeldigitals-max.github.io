@@ -61,19 +61,42 @@ export function Process() {
 export function Team() {
   return (
     <section id="team" data-chapter="07" data-tone="dark" className="bg-forest">
+      {/* ---- the founders: photograph left, story right ---- */}
       <div className="wrap section">
-        <div className="grid grid-cols-[auto_1fr] items-start gap-20 max-md:grid-cols-1 max-md:gap-8">
-          <h2 className="h-display text-white">
-            Two siblings.
-            <br />
-            <span className="accent text-gold">one</span> goal.
-          </h2>
-          <p className="border-l border-blue/40 pt-2 pl-10 text-body leading-[1.75] text-white/70 max-md:pl-5">
-            {team.story}
-          </p>
+        <div className="grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] items-center gap-20 max-md:grid-cols-1 max-md:gap-10">
+          <figure className="relative">
+            <img
+              loading="lazy"
+              decoding="async"
+              src="/brand/siblings.webp"
+              alt="Devike and Devangi, the founders of Leona Properties"
+              className="aspect-[4/5] w-full object-cover"
+            />
+            {/* Hairline frame offset from the photograph, like the Process image. */}
+            <span aria-hidden className="pointer-events-none absolute -inset-3 border border-gold/40 max-md:-inset-2" />
+          </figure>
+          <div>
+            <span className="eyebrow">The founders</span>
+            <h2 className="h-display mt-6 text-white">
+              Two siblings.
+              <br />
+              <span className="accent text-gold">one</span> goal.
+            </h2>
+            <p className="mt-8 border-l border-blue/40 pl-10 text-body leading-[1.75] text-white/70 max-md:pl-5">
+              {team.story}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* ---- the team ---- */}
+      <div className="wrap pb-[7.5rem] max-md:pb-20">
+        <div className="border-t border-white/12 pt-16 max-md:pt-12">
+          <span className="eyebrow">The team</span>
+          <h3 className="h-display mt-6 text-white">The people behind it</h3>
         </div>
 
-        <div className="mt-24 grid grid-cols-4 gap-x-10 max-md:mt-14 max-md:grid-cols-2 max-md:gap-x-5 max-md:gap-y-12">
+        <div className="mt-16 grid grid-cols-4 gap-x-10 max-md:mt-10 max-md:grid-cols-2 max-md:gap-x-5 max-md:gap-y-12">
           {team.members.map((m) => {
             const [name, role] = m.name.split(" - ").map((s) => s.trim());
             return (
@@ -100,9 +123,9 @@ export function Team() {
                   />
                 </div>
 
-                <h3 className="mt-7 text-lead font-semibold text-white transition-colors duration-300 group-hover:text-blue-bright">
+                <h4 className="mt-7 text-lead font-semibold text-white transition-colors duration-300 group-hover:text-blue-bright">
                   {name}
-                </h3>
+                </h4>
                 <p className="mt-1 text-[0.72rem] font-semibold tracking-[0.2em] text-blue-soft uppercase">
                   {role}
                 </p>

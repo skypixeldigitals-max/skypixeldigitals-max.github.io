@@ -255,7 +255,7 @@ export const team = {
     {
       name: "Devangi - Co-Founder",
       bio: "Project manager and content marketer with 4+ years of experience.",
-      img: "/brand/p-devangi-v2.webp",
+      img: "/brand/p-devangi-v3.webp",
       left: "71.5rem",
       width: "20.9rem",
       labelTop: "20rem",

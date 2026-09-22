@@ -76,18 +76,27 @@ export function Team() {
             const [name, role] = m.name.split(" - ").map((s) => s.trim());
             return (
               <article key={m.name} className="group">
-                {/* Portraits carry a halftone treatment baked into the artwork
-                    and were cut bottom-aligned, so they sit in a fixed box
-                    anchored to its base. */}
-                <div className="relative h-[19rem] overflow-hidden">
+                {/* Monochrome cutouts on the section green, bottom-anchored
+                    in a fixed box so the four heads sit on one baseline. */}
+                <div className="relative h-[22rem] overflow-hidden">
+                  {/* Hover: a brand-blue glow rises from the floor behind the
+                      figure and the figure lifts a touch. Transform/opacity only. */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-x-[-20%] bottom-[-30%] h-[110%] translate-y-1/3 opacity-0 transition-[transform,opacity] duration-700 ease-out group-hover:translate-y-0 group-hover:opacity-100"
+                    style={{
+                      background:
+                        "radial-gradient(ellipse 55% 60% at 50% 100%, rgba(90,142,212,0.85) 0%, rgba(63,114,183,0.45) 40%, rgba(63,114,183,0) 72%)",
+                    }}
+                  />
                   <img
                     src={m.img}
                     alt={name}
-                    className="absolute bottom-0 left-1/2 h-full -translate-x-1/2 object-contain object-bottom transition-transform duration-500 group-hover:scale-[1.03]"
+                    className="absolute bottom-0 left-1/2 h-full max-w-none -translate-x-1/2 object-contain object-bottom transition-transform duration-500 ease-out group-hover:-translate-y-2 group-hover:scale-[1.03]"
                   />
                 </div>
 
-                <h3 className="mt-7 text-lead font-semibold text-white">
+                <h3 className="mt-7 text-lead font-semibold text-white transition-colors duration-300 group-hover:text-blue-bright">
                   {name}
                 </h3>
                 <p className="mt-1 text-[0.72rem] font-semibold tracking-[0.2em] text-blue-bright uppercase">

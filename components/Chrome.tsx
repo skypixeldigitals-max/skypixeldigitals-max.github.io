@@ -1,5 +1,6 @@
 "use client";
 
+import { sendEnquiry } from "@/lib/enquiry";
 import { useState } from "react";
 import { locations } from "@/lib/content";
 
@@ -119,15 +120,10 @@ export function Calculator() {
                 >,
               );
               try {
-                const res = await fetch("/api/enquiry", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({ ...data, source: "calculator" }),
-                });
-                if (!res.ok) throw new Error();
+                sendEnquiry(data, "calculator");
                 setSent(true);
               } catch {
-                setError("Couldn't send that — please try again.");
+                setError("Couldn't open your mail app — email us directly.");
               } finally {
                 setBusy(false);
               }

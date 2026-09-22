@@ -1,5 +1,6 @@
 "use client";
 
+import { sendEnquiry } from "@/lib/enquiry";
 import { useEffect, useRef, useState } from "react";
 import { dashboard, alaCarte, contact, brand, locations } from "@/lib/content";
 
@@ -118,7 +119,7 @@ export function Dashboard() {
 /** Card artwork: two generated scenes, and the branded car for transfers. */
 const ALACARTE_ART = [
   "/brand/services/05-villa-consultation.webp",
-  "/brand/car.png",
+  "/brand/services/07-airport-transfer.webp",
   "/brand/services/06-photography-launch.webp",
 ];
 
@@ -222,7 +223,7 @@ export function AlaCarte() {
                     src={ALACARTE_ART[i]}
                     alt=""
                     className={`h-full w-full transition-transform duration-700 group-hover:scale-[1.04] ${
-                      i === 1 ? "object-contain p-8" : "object-cover"
+                      "object-cover"
                     }`}
                   />
                 </div>
@@ -303,11 +304,7 @@ export function Contact() {
                     [string, string]
                   >,
                 );
-                await fetch("/api/enquiry", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({ ...data, source: "contact" }),
-                }).catch(() => {});
+                sendEnquiry(data, "contact");
                 setBusy(false);
                 setSent(true);
               }}

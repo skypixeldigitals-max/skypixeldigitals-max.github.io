@@ -85,12 +85,14 @@ export default function Hero() {
       const span = r.height - window.innerHeight;
       const p = span <= 0 ? 0 : Math.min(1, Math.max(0, -r.top / span));
 
-      // The frame is 100vw × 75vw tall. Its top starts 6vh below the
-      // viewport top (so the sky band reads) and travels up until the
-      // bottom of the photo meets the bottom of the viewport.
+      // The frame is square: the top quarter is extended sky baked into the
+      // poster, the lower 4:3 is the photograph (and the video). It starts
+      // flush with the viewport top and travels up until the bottom of the
+      // photo meets the bottom of the viewport.
       const frameH = frame.offsetHeight;
-      // Roofline lands ~72% down at rest, leaving the top half as sky.
-      const startTop = window.innerHeight * 0.18;
+      // At rest the photograph's top edge sits 18vh down; the extended sky
+      // (the top quarter of the square) fills everything above it.
+      const startTop = window.innerHeight * 0.18 - frameH * 0.25;
       const endTop = window.innerHeight - frameH;
       const top = reduced ? endTop : startTop + (endTop - startTop) * p;
       frame.style.transform = `translate3d(0, ${top}px, 0)`;
@@ -148,29 +150,33 @@ export default function Hero() {
         className="sticky top-0 h-screen overflow-hidden"
         style={{
           background:
-            "linear-gradient(to bottom, #2b76bb 0%, #378ac8 60%, #378ac8 100%)",
+            "linear-gradient(to bottom, #1f6cb0 0%, #2578ba 55%, #287bbe 100%)",
         }}
       >
         {/* ---- the photograph, with the dots locked to it ---- */}
         <div
           ref={frameRef}
-          className="absolute inset-x-0 top-0 aspect-[4/3] w-full will-change-transform"
+          className="absolute inset-x-0 top-0 aspect-square w-full will-change-transform"
         >
-          {/* Poster: the approved still paints instantly; the canvas takes
-              over the moment the first frame has decoded. */}
+          {/* Poster: the approved still with its sky extended to a square,
+              paints instantly; the canvas takes over the lower 4:3 the
+              moment the first frame has decoded. */}
           <img
-            src="/brand/services/establishing.webp"
+            src="/brand/services/establishing-tall.webp"
             alt="A Leona team at work around a villa pool at golden hour"
             className="absolute inset-0 h-full w-full"
             decoding="async"
           />
+          {/* The photograph proper. Dots are positioned against this box so
+              their percentages stay relative to the 4:3 image. */}
+          <div className="absolute inset-x-0 bottom-0 aspect-[4/3] w-full">
           <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" aria-hidden />
-          {/* Blend the extended sky into the photo's own sky. */}
+          {/* Feather the (static) sky at the top of the video into the poster. */}
           <div
-            className="pointer-events-none absolute inset-x-0 top-0 h-[22%]"
+            className="pointer-events-none absolute inset-x-0 top-0 h-[14%]"
             style={{
               background:
-                "linear-gradient(to bottom, #378ac8 0%, rgba(55,138,200,0) 100%)",
+                "linear-gradient(to bottom, #287bbe 0%, rgba(40,123,190,0.6) 40%, rgba(40,123,190,0) 100%)",
             }}
           />
 
@@ -230,6 +236,7 @@ export default function Hero() {
                 </div>
               );
             })}
+          </div>
           </div>
         </div>
 

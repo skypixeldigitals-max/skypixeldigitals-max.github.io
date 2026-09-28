@@ -218,8 +218,13 @@ export const dashboard = {
  */
 export const team = {
   title: ["Two siblings.", "One goal."],
-  story:
-    "Some of our earliest memories are family trips and the spaces that hosted them - hotels, family homes, and the kinds of places where the smallest details made people feel genuinely welcomed and cared for. As we got older and worked in hospitality ourselves, that love for creating great experiences stayed with us. That's why we started Leona Properties - to bring that same care to the villas, offices, and commercial spaces alike, through interior design, property upkeep, and the kind of attention that helps every space look and feel its best.",
+  story: [
+    "We grew up in the UAE, and a big part of our childhood was spent at luxury hotels.",
+    "Our evenings were at the pool, and we would ask for rides on the golf cart at every chance. We thought the small bottles of conditioner were the finest thing in the world, along with the hairdryer on the wall and the slippers folded in their little bag.",
+    "As children, we never realised that someone had planned each of those things. We simply felt looked after.",
+    "That is the feeling we bring to every villa in our care. Small things, done so well that guests hardly notice them. They only know they want to return.",
+  ],
+  signoff: "The Sibling Duo",
   members: [
     {
       name: "Devike - Co-Founder",

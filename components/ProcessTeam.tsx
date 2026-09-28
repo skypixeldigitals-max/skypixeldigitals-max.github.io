@@ -82,9 +82,16 @@ export function Team() {
               <br />
               <span className="accent text-gold">one</span> goal.
             </h2>
-            <p className="mt-8 border-l border-blue/40 pl-10 text-body leading-[1.75] text-white/70 max-md:pl-5">
-              {team.story}
-            </p>
+            <div className="mt-8 space-y-5 border-l border-blue/40 pl-10 text-body leading-[1.8] text-white/75 max-md:pl-5">
+              {team.story.map((para) => (
+                <p key={para} className="max-w-[34rem]">
+                  {para}
+                </p>
+              ))}
+              <p className="pt-2 font-accent text-[2.4rem] leading-none text-gold">
+                &mdash; {team.signoff}
+              </p>
+            </div>
           </div>
         </div>
       </div>

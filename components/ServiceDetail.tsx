@@ -87,6 +87,9 @@ export default function ServiceDetail() {
                 </h3>
                 <div>
                   <p className="copy text-muted">{s.body}</p>
+                  <p className="copy mt-4 border-l-2 border-gold/60 pl-4 font-display text-[1.08rem] leading-[1.6] text-forest italic">
+                    {s.note}
+                  </p>
                   <a
                     href="#enquire"
                     className="mt-5 inline-flex min-h-11 items-center gap-2 text-eyebrow font-semibold tracking-[0.22em] text-blue uppercase transition-[gap,color] duration-200 hover:gap-4 hover:text-blue-bright"

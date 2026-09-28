@@ -77,6 +77,7 @@ export default function RootLayout({
           Skip to content
         </a>
         {children}
+        <div aria-hidden className="grain" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}

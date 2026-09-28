@@ -44,25 +44,29 @@ export const services = [
   {
     number: "01",
     title: "Property Management",
-    body: "We handle your guests, coordinate cleaners, deal with maintenance, manage your calendar, and optimise your pricing — every single day. You log in once a month to see what you've earned.",
+    body: "Guests, housekeeping, maintenance, calendar and pricing, handled every day while you are away. Each month you receive a clear account of what your villa earned and what it cost.",
+    note: "A guest who writes at eleven at night gets a reply from a person. You hear about it in your report, not in a review.",
     mode: "villa" as const,
   },
   {
     number: "02",
     title: "Interior Design & Architecture",
-    body: "We design villas that rank — not just look good. Every decision is informed by Airbnb's search algorithm, what guests filter for, and what drives five-star reviews.",
+    body: "Spaces designed to earn, not only to impress. Every decision is guided by what guests search for, what they book and what earns five-star reviews.",
+    note: "We look at your villa the way a guest will: the switch beside the bed, the hook by the shower, the light on the veranda. Reviews are won in the small details.",
     mode: "villa" as const,
   },
   {
     number: "03",
     title: "Listing Optimisation",
-    body: "A great property with a bad listing earns nothing. We write SEO-optimised descriptions, shoot scroll-stopping photography, and build listings that show up — and convert.",
+    body: "Copy, photography and settings built to rank on Airbnb and Booking.com, and to convert once a guest finds you.",
+    note: "Before we change anything, we show you what is holding your listing back and what we will do about it.",
     mode: "screen" as const,
   },
   {
     number: "04",
     title: "Content Creation",
-    body: "We craft scroll-stopping content for your property — reels, photography, and social media assets that build your brand, attract more guests, and keep your listing ahead of the competition.",
+    body: "Photography, reels and social content that keep your villa visible between bookings and give guests a reason to return.",
+    note: "Every shoot is planned around what books, not only what looks good.",
     mode: "screen" as const,
   },
 ];

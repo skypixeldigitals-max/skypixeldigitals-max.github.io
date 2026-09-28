@@ -243,3 +243,19 @@ button:hover > .swap > span + span     { transform: translateY(0); }
   .section-sm { padding-block: 3.5rem; }
   .copy      { max-width: none; }
 }
+
+/* Film grain over the whole page, like the reference photography. A static
+   tile of light and dark specks, no blend mode, so it costs nothing to
+   scroll and reads on both the sky and the forest sections. */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  background: url("/brand/grain.png") repeat;
+  background-size: 180px 180px;
+  opacity: 0.55;
+}
+@media (prefers-contrast: more) {
+  .grain { display: none; }
+}

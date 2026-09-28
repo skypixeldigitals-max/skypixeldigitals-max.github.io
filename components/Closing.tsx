@@ -434,7 +434,7 @@ export function Proof() {
     <section data-chapter="02" data-tone="light" className="bg-bone">
       <div className="wrap section grid grid-cols-[1fr_1.1fr] gap-20 max-md:grid-cols-1 max-md:gap-10">
         <div>
-          <span className="eyebrow">Villa E32 · Ahangama</span>
+          <span className="eyebrow">[Villa name] · [Town]</span>
           <h2 className="h-display mt-6 text-forest">
             What changed
             <br />
@@ -453,7 +453,7 @@ export function Proof() {
           <p className="font-display text-[1.6rem] leading-[1.35] text-forest">
             &ldquo;Owner quote goes here — one or two sentences in their own words.&rdquo;
           </p>
-          <footer className="mt-6 text-sm text-muted">Owner name, Villa E32</footer>
+          <footer className="mt-6 text-sm text-muted">[Owner name], [Villa]</footer>
         </blockquote>
       </div>
     </section>

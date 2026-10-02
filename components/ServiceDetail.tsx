@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { services } from "@/lib/content";
+import Drift from "@/components/Drift";
 
 /** One accent word per service, dropped into script inside the caps title. */
 const ACCENT: Record<string, [string, string]> = {
@@ -51,9 +52,21 @@ export default function ServiceDetail() {
               <span className="accent text-gold">done properly</span>
             </h2>
           </div>
-          <p className="copy max-w-[22rem] pb-3 text-muted max-md:pb-0">
-            Every villa we take on gets all four. Most owners only ever had one.
-          </p>
+          <div className="flex flex-col items-end gap-6 max-md:items-start">
+            {/* Rattan: the piece every south-coast veranda is built around. */}
+            <Drift distance={30} className="w-[15rem] max-md:hidden">
+              <img
+                src="/brand/rattan-chair.webp"
+                alt=""
+                loading="lazy"
+                decoding="async"
+                className="w-full drop-shadow-[0_22px_26px_rgba(20,35,29,0.18)]"
+              />
+            </Drift>
+            <p className="copy max-w-[22rem] pb-3 text-right text-muted max-md:pb-0 max-md:text-left">
+              Every villa we take on gets all four. Most owners only ever had one.
+            </p>
+          </div>
         </div>
 
         <ol className="mt-24 max-md:mt-12">

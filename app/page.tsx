@@ -7,6 +7,7 @@ import { PlatformBar } from "@/components/Sections";
 import { Process, Team } from "@/components/ProcessTeam";
 import Locations from "@/components/Locations";
 import { Dashboard, AlaCarte, Contact, Footer, Proof } from "@/components/Closing";
+import Veranda from "@/components/Veranda";
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
         <Team />
         <Dashboard />
         <AlaCarte />
+        <Veranda />
         <Contact />
       </main>
       <Footer />

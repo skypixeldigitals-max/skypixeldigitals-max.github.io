@@ -88,7 +88,7 @@ export default function Concierge() {
                 </a>
               </div>
               <p className="mt-8 text-sm text-white/60">
-                From Rs 19,900 a month, under a quarter of a receptionist&apos;s salary ·{" "}
+                From Rs 19,900 a month, under a third of the cost of one hire ·{" "}
                 {languages.length} languages · Built in Galle
               </p>
             </div>
@@ -158,9 +158,8 @@ export default function Concierge() {
                 minus the <span className="accent">payroll</span>
               </Heading>
               <p className="max-w-[26rem] pb-2 text-body leading-[1.75] text-muted">
-                An experienced receptionist who speaks a few languages costs Rs 80,000 to
-                150,000 a month, before EPF and ETF. One person covers one shift. Answering
-                guests at night means hiring three.
+                Hotels and travel firms in Sri Lanka advertise Rs 60,000 to 125,000 a month for staff who
+                speak your guests&apos; languages, plus 15% EPF and ETF. Slide to your number.
               </p>
             </div>
             <Savings />

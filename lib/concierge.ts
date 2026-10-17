@@ -32,41 +32,41 @@ export const steps = [
   },
   {
     title: "Guests reach it 24/7",
-    text: "A QR code and link on the check-in card, or a local phone number. Guests talk to it like a person, in their own language, at any hour.",
+    text: "A QR code on the check-in card, or a local phone number. Guests call any time and speak their own language.",
   },
   {
     title: "You only hear what matters",
-    text: "Small questions get answered on the spot. Real problems and paid extras reach your phone as one clear alert. Nothing wakes you at night unless it should.",
+    text: "Small questions get answered on the spot. Real problems and paid extras come to your phone as a short alert. At night, only urgent ones.",
   },
 ];
 
 export const audiences = [
   { title: "Villa owners who live abroad", text: "Your guests get answers in minutes, not when you wake up in another time zone." },
   { title: "Guest houses without night staff", text: "Someone picks up at 3 am without you paying for a night shift." },
-  { title: "Boutique hotels up to 25 rooms", text: "Your front desk stops repeating the Wi-Fi password all day and handles the guests in front of them." },
+  { title: "Boutique hotels up to 25 rooms", text: "Your front desk stops reading out the Wi-Fi password all day." },
   { title: "Property managers", text: "One setup per property, one dashboard for every alert and every extra sold." },
 ];
 
 export const differences = [
   {
-    title: "Built by villa managers, not a software company",
-    text: "Leona runs villas on the south coast. Every rule in the concierge comes from real guest calls: lockouts, airport runs, the Wi-Fi that stopped working at midnight.",
+    title: "Made by villa managers",
+    text: "We run villas on the south coast, so the concierge knows the calls that actually come in: lockouts, airport runs, the Wi-Fi that drops at midnight.",
   },
   {
-    title: "It talks. It doesn't just send menus",
-    text: "No press 1, press 2. Guests speak normally and get a short, clear answer, like calling a friendly local host.",
+    title: "Guests just talk to it",
+    text: "No menus, no pressing 1. Guests ask the way they'd ask you, and get a short answer.",
   },
   {
-    title: "It knows when to call you",
-    text: "Every problem gets an urgency level. A dead keypad at night reaches you straight away; a request for towels waits until morning.",
+    title: "It knows when to bother you",
+    text: "A dead keypad at night reaches you straight away. A request for towels waits until morning.",
   },
   {
-    title: "It earns its keep",
-    text: "Airport pickups, tours and late checkouts get offered at the right moment, and every confirmed extra lands in your dashboard with the total.",
+    title: "It sells your extras",
+    text: "It offers the airport pickup when a guest mentions their flight, and the tour when they ask what to do. You see every one, with the total.",
   },
   {
-    title: "Honest by design",
-    text: "It tells guests it's a digital assistant. It never confirms a booking, discount or refund on its own, and never makes up an answer.",
+    title: "It won't overpromise",
+    text: "It tells guests it's a digital assistant. It won't confirm a booking, discount or refund, and if it doesn't know something, it says so and asks you.",
   },
 ];
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Footer } from "@/components/Closing";
 import { WhatsAppIcon } from "@/components/Chrome";
 import ConciergeForm from "@/components/ConciergeForm";
+import Savings from "@/components/Savings";
 import {
   audiences,
   conciergeWhatsApp,
@@ -14,11 +15,11 @@ import {
 } from "@/lib/concierge";
 
 export const metadata: Metadata = {
-  title: "Leona Concierge — A 24/7 Digital Concierge for Villas in Sri Lanka",
+  title: "Leona Concierge | 24/7 digital concierge for villas in Sri Lanka",
   description:
     "Leona Concierge answers your guests' calls day and night in 11 languages, sells airport pickups and tours, and only alerts you when something really needs you. Built by villa managers on Sri Lanka's south coast.",
   openGraph: {
-    title: "Leona Concierge — Your guests, answered day and night",
+    title: "Leona Concierge | Your guests, answered day and night",
     description:
       "A digital concierge for villas and boutique hotels in Sri Lanka. Answers guests 24/7, sells extras, alerts you only when it matters.",
     url: "/concierge/",
@@ -56,6 +57,7 @@ export default function Concierge() {
           </a>
           <nav aria-label="Concierge" className="flex items-center gap-8 text-[0.68rem] font-semibold tracking-[0.24em] text-white uppercase">
             <a href="#how" className="max-md:hidden hover:opacity-70">How it works</a>
+            <a href="#savings" className="max-md:hidden hover:opacity-70">Savings</a>
             <a href="#packages" className="max-md:hidden hover:opacity-70">Packages</a>
             <a href="#faq" className="max-md:hidden hover:opacity-70">FAQ</a>
             <a href="#demo" className="rounded-sm border border-white/50 px-5 py-3 hover:bg-white hover:text-forest">Book a demo</a>
@@ -86,7 +88,8 @@ export default function Concierge() {
                 </a>
               </div>
               <p className="mt-8 text-sm text-white/60">
-                From Rs 19,900 a month · {languages.length} languages · Built in Galle
+                From Rs 19,900 a month, under a quarter of a receptionist&apos;s salary ·{" "}
+                {languages.length} languages · Built in Galle
               </p>
             </div>
 
@@ -134,14 +137,33 @@ export default function Concierge() {
                 of those lands on your phone, or goes unanswered.
               </p>
               <p>
-                Unanswered questions turn into three-star reviews. Answering all of them yourself
-                means never really switching off. A night receptionist costs more than most
-                villas can carry.
+                Leave them and you get a three-star review. Answer them all yourself and you
+                never really switch off. Hire someone and you&apos;re paying a full salary for
+                a phone that rings a few times a night.
               </p>
               <p className="font-semibold text-ink">
-                Leona Concierge handles the questions, so you only handle what&apos;s worth your time.
+                Leona Concierge takes those calls. You only hear about the ones that need you.
               </p>
             </div>
+          </div>
+        </section>
+
+        {/* ---- cost vs a receptionist ---- */}
+        <section id="savings" data-tone="light" className="scroll-mt-10 bg-white">
+          <div className="wrap section">
+            <div className="flex items-end justify-between gap-20 max-md:flex-col max-md:items-start max-md:gap-6">
+              <Heading eyebrow="What it costs you now">
+                A receptionist,
+                <br />
+                minus the <span className="accent">payroll</span>
+              </Heading>
+              <p className="max-w-[26rem] pb-2 text-body leading-[1.75] text-muted">
+                An experienced receptionist who speaks a few languages costs Rs 80,000 to
+                150,000 a month, before EPF and ETF. One person covers one shift. Answering
+                guests at night means hiring three.
+              </p>
+            </div>
+            <Savings />
           </div>
         </section>
 
@@ -191,8 +213,7 @@ export default function Concierge() {
               </Heading>
               <p className="max-w-[26rem] pb-2 text-body leading-[1.75] text-white/75">
                 Leona Properties manages villas on Sri Lanka&apos;s south coast. We built the
-                concierge because we needed it ourselves, then made it good enough to offer
-                to other owners.
+                concierge for the villas we look after, and now we offer it to other owners.
               </p>
             </div>
             <ul className="mt-16 grid grid-cols-3 gap-px bg-white/10 max-md:grid-cols-1">

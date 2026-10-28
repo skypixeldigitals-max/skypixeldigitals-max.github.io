@@ -16,7 +16,7 @@ export default function ConciergeForm() {
     return (
       <p role="status" className="mt-14 max-w-[42rem] border-l-2 border-gold pl-6 text-body leading-[1.75] text-white/85">
         Thank you. We&apos;ll message you within 24 hours to set up a short demo call
-        with a concierge trained on a real villa.
+        with a concierge trained on a real property.
       </p>
     );
   }
@@ -40,7 +40,7 @@ export default function ConciergeForm() {
         }}
       >
         <Labelled label="Property and area" id="c-prop">
-          <input id="c-prop" name="property" required placeholder="Seaview Villa, Mirissa" className={field} />
+          <input id="c-prop" name="property" required placeholder="Sunset Bay Hotel, Unawatuna" className={field} />
         </Labelled>
         <Labelled label="Rooms" id="c-rooms">
           <input id="c-rooms" name="rooms" type="number" min={1} inputMode="numeric" placeholder="4" className={field} />

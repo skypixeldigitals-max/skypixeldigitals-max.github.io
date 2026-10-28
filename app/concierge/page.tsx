@@ -15,13 +15,13 @@ import {
 } from "@/lib/concierge";
 
 export const metadata: Metadata = {
-  title: "Leona Concierge | 24/7 digital concierge for villas in Sri Lanka",
+  title: "Leona Concierge | 24/7 digital concierge for hotels, villas and guest houses in Sri Lanka",
   description:
-    "Leona Concierge answers your guests' calls day and night in 11 languages, sells airport pickups and tours, and only alerts you when something really needs you. Built by villa managers on Sri Lanka's south coast.",
+    "Leona Concierge answers your guests' calls day and night in 11 languages, sells airport pickups and tours, and only alerts you when something really needs you. Built by a hospitality team on Sri Lanka's south coast.",
   openGraph: {
     title: "Leona Concierge | Your guests, answered day and night",
     description:
-      "A digital concierge for villas and boutique hotels in Sri Lanka. Answers guests 24/7, sells extras, alerts you only when it matters.",
+      "A digital concierge for hotels, resorts, guest houses and villas in Sri Lanka. Answers guests 24/7, sells extras, alerts you only when it matters.",
     url: "/concierge/",
     siteName: "Leona Properties",
     type: "website",
@@ -70,7 +70,7 @@ export default function Concierge() {
         <section id="top" data-tone="dark" className="bg-forest">
           <div className="wrap grid grid-cols-[1.15fr_1fr] items-center gap-20 pt-[11rem] pb-[7.5rem] max-md:grid-cols-1 max-md:gap-14 max-md:pt-32 max-md:pb-16">
             <div>
-              <span className="eyebrow">Leona Concierge · Digital concierge for villas</span>
+              <span className="eyebrow">Leona Concierge · For hotels and villas</span>
               <h1 className="h-display mt-6 text-white">
                 Your guests, answered
                 <br />
@@ -134,12 +134,12 @@ export default function Concierge() {
               <p>
                 Guests don&apos;t keep office hours. The keypad dies at midnight, the flight is
                 at 6 am, someone wants to know if the beach is walkable in the rain. Every one
-                of those lands on your phone, or goes unanswered.
+                of those lands on your phone, on a tired night desk, or goes unanswered.
               </p>
               <p>
                 Leave them and you get a three-star review. Answer them all yourself and you
-                never really switch off. Hire someone and you&apos;re paying a full salary for
-                a phone that rings a few times a night.
+                never really switch off. Hire someone, or keep a night desk staffed, and you&apos;re
+                paying a full salary for a phone that rings a few times a night.
               </p>
               <p className="font-semibold text-ink">
                 Leona Concierge takes those calls. You only hear about the ones that need you.
@@ -188,7 +188,7 @@ export default function Concierge() {
         <section data-tone="light" className="bg-paper">
           <div className="wrap section grid grid-cols-[1fr_1.4fr] gap-20 max-md:grid-cols-1 max-md:gap-10">
             <Heading eyebrow="Who it's for">
-              Made for <span className="accent">small</span> stays
+              Made for <span className="accent">every</span> stay
             </Heading>
             <ul className="grid grid-cols-2 gap-x-10 gap-y-10 max-md:grid-cols-1 max-md:gap-y-8">
               {audiences.map((a) => (
@@ -208,11 +208,12 @@ export default function Concierge() {
               <Heading eyebrow="Why Leona Concierge" tone="dark">
                 Built by people
                 <br />
-                who <span className="accent text-gold">run</span> villas
+                who <span className="accent text-gold">host</span> guests
               </Heading>
               <p className="max-w-[26rem] pb-2 text-body leading-[1.75] text-white/75">
-                Leona Properties manages villas on Sri Lanka&apos;s south coast. We built the
-                concierge for the villas we look after, and now we offer it to other owners.
+                Leona Properties hosts guests on Sri Lanka&apos;s south coast. We built the
+                concierge for our own villas first. The calls are the same at four rooms or two
+                hundred, so now we offer it to every kind of property.
               </p>
             </div>
             <ul className="mt-16 grid grid-cols-3 gap-px bg-white/10 max-md:grid-cols-1">
@@ -238,8 +239,8 @@ export default function Concierge() {
                 Pick your <span className="accent">plan</span>
               </Heading>
               <p className="max-w-[24rem] pb-2 text-body leading-[1.75] text-muted">
-                Every plan includes the voice concierge, Sinhala on WhatsApp and instant owner
-                alerts. Lower rates from May to October.
+                Every plan includes the voice concierge, Sinhala on WhatsApp and instant alerts
+                to you or your team. Lower rates from May to October.
               </p>
             </div>
 
@@ -306,7 +307,8 @@ export default function Concierge() {
             <div className="mt-10 grid grid-cols-[1fr_auto] items-center gap-8 border-t border-rule pt-8 max-md:grid-cols-1">
               <p className="text-body text-ink">
                 <strong className="font-semibold">Founding offer:</strong> the first 3 properties get 50% off
-                setup and the first month free.
+                setup and the first month free. Larger hotels, resorts and groups with several
+                properties get a custom plan.
               </p>
               <p className="text-sm text-muted">
                 Extra call minutes Rs 65 · Extra WhatsApp replies Rs 20 · <span className="text-gold-text font-semibold">Soon</span> = launching with WhatsApp
@@ -318,7 +320,7 @@ export default function Concierge() {
         {/* ---- FAQ ---- */}
         <section id="faq" data-tone="light" className="scroll-mt-10 bg-white">
           <div className="wrap section grid grid-cols-[1fr_1.6fr] gap-20 max-md:grid-cols-1 max-md:gap-10">
-            <Heading eyebrow="Questions owners ask">
+            <Heading eyebrow="Questions owners and managers ask">
               Good to <span className="accent">know</span>
             </Heading>
             <div className="border-t border-rule">

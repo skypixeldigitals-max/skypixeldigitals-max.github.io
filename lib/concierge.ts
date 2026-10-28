@@ -5,7 +5,7 @@
 
 export const conciergeWhatsApp =
   "https://wa.me/94740591853?text=" +
-  encodeURIComponent("Hi Leona, I'd like a demo of Leona Concierge for my villa in ");
+  encodeURIComponent("Hi Leona, I'd like a demo of Leona Concierge for my property in ");
 
 export const languages = [
   "English", "Arabic", "Chinese", "Dutch", "French", "German",
@@ -27,8 +27,8 @@ export const sampleCall: { who: "guest" | "gayan" | "alert"; text: string }[] = 
 
 export const steps = [
   {
-    title: "We learn your villa",
-    text: "Send us your house manual, or talk us through it on one call: Wi-Fi, door codes, breakfast times, the café down the road, your transfer prices. We set your concierge up and test it with you.",
+    title: "We learn your property",
+    text: "Send us your house manual or front desk notes, or talk us through it on one call: Wi-Fi, door codes, breakfast times, the café down the road, your transfer prices. We set your concierge up and test it with you.",
   },
   {
     title: "Guests reach it 24/7",
@@ -36,21 +36,23 @@ export const steps = [
   },
   {
     title: "You only hear what matters",
-    text: "Small questions get answered on the spot. Real problems and paid extras come to your phone as a short alert. At night, only urgent ones.",
+    text: "Small questions get answered on the spot. Real problems and paid extras come to your phone, or your duty manager's, as a short alert. At night, only urgent ones.",
   },
 ];
 
 export const audiences = [
-  { title: "Villa owners who live abroad", text: "Your guests get answers in minutes, not when you wake up in another time zone." },
-  { title: "Guest houses without night staff", text: "Someone picks up at 3 am without you paying for a night shift." },
-  { title: "Boutique hotels up to 25 rooms", text: "Your front desk stops reading out the Wi-Fi password all day." },
-  { title: "Property managers", text: "One setup per property, one dashboard for every alert and every extra sold." },
+  { title: "Villas and holiday homes", text: "Guests get answers in minutes, even when the owner lives in another time zone." },
+  { title: "Guest houses and homestays", text: "Someone picks up at 3 am without you paying for a night shift." },
+  { title: "Boutique and city hotels", text: "The front desk stops reading out the Wi-Fi password all day, and calls still get answered during a busy check-in." },
+  { title: "Resorts and large hotels", text: "It takes the overflow at peak times, and calls in languages your team doesn't speak, around the clock." },
+  { title: "Hostels", text: "Travellers get checkout times, locker rules and bus routes without queuing at the desk." },
+  { title: "Property managers and groups", text: "One setup per property, one dashboard for every alert and every extra sold." },
 ];
 
 export const differences = [
   {
-    title: "Made by villa managers",
-    text: "We run villas on the south coast, so the concierge knows the calls that actually come in: lockouts, airport runs, the Wi-Fi that drops at midnight.",
+    title: "Made by people who host",
+    text: "We host guests on the south coast ourselves, so the concierge knows the calls that actually come in: lockouts, airport runs, the Wi-Fi that drops at midnight.",
   },
   {
     title: "Guests just talk to it",
@@ -84,7 +86,7 @@ export type Plan = {
 export const plans: Plan[] = [
   {
     name: "Essential",
-    forWho: "Villas and guest houses, up to 6 rooms",
+    forWho: "Villas, homestays and small guest houses, up to 6 rooms",
     price: "19,900",
     low: "14,900",
     setup: "30,000",
@@ -93,13 +95,13 @@ export const plans: Plan[] = [
       { text: "Answers in 11 languages" },
       { text: "Sinhala replies on WhatsApp", soon: true },
       { text: "1,000 WhatsApp replies a month", soon: true },
-      { text: "Instant owner alerts, quiet at night" },
-      { text: "Owner dashboard with every request" },
+      { text: "Instant alerts to you or your team, quiet at night" },
+      { text: "Dashboard with every request" },
     ],
   },
   {
     name: "Signature",
-    forWho: "Guest houses and villas, 5 to 12 rooms",
+    forWho: "Guest houses, hostels and small hotels, 5 to 12 rooms",
     price: "32,900",
     low: "24,700",
     setup: "40,000",
@@ -116,7 +118,7 @@ export const plans: Plan[] = [
   },
   {
     name: "Estate",
-    forWho: "Boutique hotels, 13 to 25 rooms",
+    forWho: "Boutique hotels and small resorts, 13 to 25 rooms",
     price: "59,900",
     low: "44,900",
     setup: "50,000",
@@ -135,7 +137,7 @@ export const plans: Plan[] = [
 export const faqs: [string, string][] = [
   [
     "Will guests know they're not talking to a person?",
-    "Yes. It introduces itself as the villa's digital assistant, and if a guest asks, it says so plainly and offers to get someone from your team.",
+    "Yes. It introduces itself as your property's digital assistant, and if a guest asks, it says so plainly and offers to get someone from your team.",
   ],
   [
     "What happens when it doesn't know an answer?",

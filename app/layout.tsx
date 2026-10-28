@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import { Montserrat, Playfair_Display, Pinyon_Script } from "next/font/google";
+import { Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 /**
- * Three faces, three jobs — modelled on ERA Residence's pairing but with free
- * Google equivalents:
- *   display  Playfair Display  (Didone; stands in for Ambroise François)
- *   accent   Pinyon Script     (the single lowercase word inside a caps line)
+ * Two faces, two jobs, both free on Google Fonts:
+ *   display  Playfair Display  (Didone; stands in for Ambroise François; gold accent words too)
  *   body     Montserrat        (the brand face from the Figma file)
  */
 const display = Playfair_Display({
@@ -14,12 +12,6 @@ const display = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "500"],
   style: ["normal", "italic"],
-});
-
-const accent = Pinyon_Script({
-  variable: "--font-accent",
-  subsets: ["latin"],
-  weight: "400",
 });
 
 const body = Montserrat({
@@ -70,7 +62,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${display.variable} ${accent.variable} ${body.variable} h-full antialiased`}
+      className={`${display.variable} ${body.variable} h-full antialiased`}
     >
       <body className="min-h-full">
         <a href="#main" className="skip-link">

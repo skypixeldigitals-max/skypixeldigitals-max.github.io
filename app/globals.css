@@ -23,7 +23,7 @@
 
   --font-sans: var(--font-montserrat), system-ui, sans-serif;
   --font-display: var(--font-display), Georgia, serif;
-  --font-accent: var(--font-accent), cursive;
+  --font-accent: var(--font-display), Georgia, serif;   /* no script face: accents use the display serif */
 }
 
 /**
@@ -156,7 +156,7 @@ body {
 .bg-forest-deep .eyebrow {
   color: var(--color-gold);
 }
-/* The script accent inside a caps heading: brand gold on green, the deeper
+/* The accent word inside a caps heading: brand gold on green, the deeper
    text gold on bone/paper so it clears 3:1 for large text. */
 [data-tone="light"] .h-display .accent {
   color: var(--color-gold-text);
@@ -169,13 +169,9 @@ body {
   font-weight: 400;
   text-transform: uppercase;
 }
-/* The single lowercase word inside a caps line — ERA's signature move. */
+/* The accent word inside a caps heading: same serif, picked out in gold. */
 .h-display .accent {
-  font-family: var(--font-accent), cursive;
-  font-size: 1.35em;
-  line-height: 0.8;
-  letter-spacing: 0;
-  text-transform: none;
+  font-family: var(--font-display), Georgia, serif;
   font-weight: 400;
 }
 .h-title {

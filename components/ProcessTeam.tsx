@@ -90,7 +90,7 @@ export function Team() {
                 </p>
               ))}
               <div className="flex items-end justify-between gap-6 pt-2">
-                <p className="font-accent text-[2.4rem] leading-none text-gold">
+                <p className="font-display text-[1.6rem] leading-none text-gold">
                   &mdash; {team.signoff}
                 </p>
                 {/* The king coconut from "our evenings were at the pool". */}

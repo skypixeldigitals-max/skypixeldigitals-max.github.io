@@ -39,10 +39,10 @@ export default function ConciergeForm() {
           }
         }}
       >
-        <Labelled label="Property and area" id="c-prop">
-          <input id="c-prop" name="property" required placeholder="Sunset Bay Hotel, Unawatuna" className={field} />
+        <Labelled label="Business and area" id="c-prop">
+          <input id="c-prop" name="property" required placeholder="Hotel, villa or tour company, area" className={field} />
         </Labelled>
-        <Labelled label="Rooms" id="c-rooms">
+        <Labelled label="Rooms or vehicles" id="c-rooms">
           <input id="c-rooms" name="rooms" type="number" min={1} inputMode="numeric" placeholder="4" className={field} />
         </Labelled>
         <Labelled label="Phone or WhatsApp" id="c-tel">

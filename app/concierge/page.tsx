@@ -12,16 +12,18 @@ import {
   plans,
   sampleCall,
   steps,
+  tourCall,
+  tourPoints,
 } from "@/lib/concierge";
 
 export const metadata: Metadata = {
-  title: "Leona Concierge | 24/7 digital concierge for hotels, villas and guest houses in Sri Lanka",
+  title: "Leona Concierge | 24/7 digital concierge for hotels, villas and tour companies in Sri Lanka",
   description:
-    "Leona Concierge answers your guests' calls day and night in 11 languages, sells airport pickups and tours, and only alerts you when something really needs you. Built by a hospitality team on Sri Lanka's south coast.",
+    "Leona Concierge answers your guests' calls day and night in 11 languages, sells airport pickups and tours, and only alerts you when something really needs you. Built by a hotel and travel team on Sri Lanka's south coast.",
   openGraph: {
     title: "Leona Concierge | Your guests, answered day and night",
     description:
-      "A digital concierge for hotels, resorts, guest houses and villas in Sri Lanka. Answers guests 24/7, sells extras, alerts you only when it matters.",
+      "A digital concierge for hotels, resorts, villas and tour companies in Sri Lanka. Answers guests 24/7, sells extras, alerts you only when it matters.",
     url: "/concierge/",
     siteName: "Leona Properties",
     type: "website",
@@ -57,6 +59,7 @@ export default function Concierge() {
           </a>
           <nav aria-label="Concierge" className="flex items-center gap-8 text-[0.68rem] font-semibold tracking-[0.24em] text-white uppercase">
             <a href="#how" className="max-md:hidden hover:opacity-70">How it works</a>
+            <a href="#tours" className="max-md:hidden hover:opacity-70">Tours</a>
             <a href="#savings" className="max-md:hidden hover:opacity-70">Savings</a>
             <a href="#packages" className="max-md:hidden hover:opacity-70">Packages</a>
             <a href="#faq" className="max-md:hidden hover:opacity-70">FAQ</a>
@@ -70,7 +73,7 @@ export default function Concierge() {
         <section id="top" data-tone="dark" className="bg-forest">
           <div className="wrap grid grid-cols-[1.15fr_1fr] items-center gap-20 pt-[11rem] pb-[7.5rem] max-md:grid-cols-1 max-md:gap-14 max-md:pt-32 max-md:pb-16">
             <div>
-              <span className="eyebrow">Leona Concierge · For hotels and villas</span>
+              <span className="eyebrow">Leona Concierge · For hotels, villas and tours</span>
               <h1 className="h-display mt-6 text-white">
                 Your guests, answered
                 <br />
@@ -201,6 +204,62 @@ export default function Concierge() {
           </div>
         </section>
 
+        {/* ---- tour companies ---- */}
+        <section id="tours" data-tone="dark" className="scroll-mt-10 bg-forest-deep">
+          <div className="wrap section grid grid-cols-[1.1fr_1fr] items-start gap-20 max-md:grid-cols-1 max-md:gap-12">
+            <div>
+              <Heading eyebrow="Tour and travel companies" tone="dark">
+                Built for <span className="accent text-gold">tours</span>
+                <br />
+                as well
+              </Heading>
+              <p className="copy mt-8 text-white/75">
+                We run Leona Travels too, so we built the concierge for the calls tour companies
+                get: travellers on the road, drivers running late, last-minute add-ons. It
+                answers in their language and passes the rest to your team.
+              </p>
+              <ul className="mt-12 space-y-8">
+                {tourPoints.map((p) => (
+                  <li key={p.title} className="border-t border-white/10 pt-6">
+                    <h3 className="text-lead font-semibold text-white">{p.title}</h3>
+                    <p className="mt-3 text-body leading-[1.7] text-white/70">{p.text}</p>
+                  </li>
+                ))}
+              </ul>
+              <a href="#demo" className={`${btnPrimary} mt-12`}>Book a demo for your tours</a>
+            </div>
+
+            <figure className="rounded-sm border border-white/15 bg-forest p-7 max-md:p-5" aria-label="A sample tour call">
+              <figcaption className="flex items-center justify-between border-b border-white/10 pb-4 text-[0.68rem] font-semibold tracking-[0.24em] text-white/60 uppercase">
+                <span>Traveller line · Ella day tour</span>
+                <span className="text-gold">Sample call</span>
+              </figcaption>
+              <ul className="mt-5 space-y-3">
+                {tourCall.map((m, i) =>
+                  m.who === "alert" ? (
+                    <li key={i} className="border-l-2 border-gold bg-white/[0.04] px-4 py-2.5 text-[0.8rem] leading-[1.5] text-gold">
+                      {m.text}
+                    </li>
+                  ) : (
+                    <li key={i} className={`flex ${m.who === "guest" ? "justify-end" : ""}`}>
+                      <span
+                        className={`max-w-[85%] rounded-sm px-4 py-2.5 text-sm leading-[1.55] ${
+                          m.who === "guest" ? "bg-blue text-white" : "bg-white/[0.08] text-white/90"
+                        }`}
+                      >
+                        {m.text}
+                      </span>
+                    </li>
+                  ),
+                )}
+              </ul>
+              <p className="mt-6 text-sm leading-[1.6] text-white/55">
+                Tour companies are priced by call volume rather than rooms. Ask us for a plan.
+              </p>
+            </figure>
+          </div>
+        </section>
+
         {/* ---- why different / built by ---- */}
         <section data-tone="dark" className="bg-forest">
           <div className="wrap section">
@@ -307,8 +366,8 @@ export default function Concierge() {
             <div className="mt-10 grid grid-cols-[1fr_auto] items-center gap-8 border-t border-rule pt-8 max-md:grid-cols-1">
               <p className="text-body text-ink">
                 <strong className="font-semibold">Founding offer:</strong> the first 3 properties get 50% off
-                setup and the first month free. Larger hotels, resorts and groups with several
-                properties get a custom plan.
+                setup and the first month free. Larger hotels, resorts, groups with several
+                properties and tour companies get a custom plan.
               </p>
               <p className="text-sm text-muted">
                 Extra call minutes Rs 65 · Extra WhatsApp replies Rs 20 · <span className="text-gold-text font-semibold">Soon</span> = launching with WhatsApp

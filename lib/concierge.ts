@@ -49,6 +49,30 @@ export const audiences = [
   { title: "Property managers and groups", text: "One setup per property, one dashboard for every alert and every extra sold." },
 ];
 
+/** Tour and transfer companies: the same concierge, answering travellers instead of hotel guests. */
+export const tourCall: { who: "guest" | "gayan" | "alert"; text: string }[] = [
+  { who: "guest", text: "Our driver for the Ella trip isn't here yet. We're at the hotel in Galle." },
+  { who: "gayan", text: "Sorry about that. Saman is ten minutes away, stuck behind a bus. He'll call you when he's outside." },
+  { who: "alert", text: "Ops alerted · Ella tour, pickup late, Galle Fort Hotel · guests waiting" },
+  { who: "guest", text: "Can we add Nine Arches Bridge on the way?" },
+  { who: "gayan", text: "Yes, it adds about an hour and Rs 5,000. I'll send it to the team to confirm." },
+];
+
+export const tourPoints = [
+  {
+    title: "Answers travellers on the road",
+    text: "Pickup times, what to bring, how long the drive is, whether the safari runs in the rain. In their language, at 5 am before the sunrise trip.",
+  },
+  {
+    title: "Turns questions into bookings",
+    text: "It quotes your tours and transfers from your own price list, and sends every enquiry to your team with the date, the group size and the total.",
+  },
+  {
+    title: "Catches problems mid-trip",
+    text: "A late driver, a changed flight, a guest who feels unwell. Your ops person gets a short alert straight away, not a missed call.",
+  },
+];
+
 export const differences = [
   {
     title: "Made by people who host",

@@ -62,7 +62,7 @@ export default function Savings() {
           <span>Monthly</span>
           <span className="font-semibold">{rs(PLAN.price)}</span>
         </p>
-        <p className="mt-2 text-sm text-white/70">Works 168 hours a week. Speaks eleven languages.</p>
+        <p className="mt-2 text-sm text-white/70">Works 168 hours a week. Speaks six languages.</p>
 
         <div className="mt-auto pt-10">
           <span className="text-sm text-white/70">You save</span>

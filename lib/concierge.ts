@@ -30,7 +30,7 @@ export const steps = [
   },
   {
     title: "Guests reach it 24/7",
-    text: "A QR code on the check-in card, or a local phone number. Guests call any time and speak their own language.",
+    text: "A QR code on the check-in card or a link in your welcome message. Guests call any time and speak their own language.",
   },
   {
     title: "You only hear what matters",
@@ -171,7 +171,7 @@ export const plans: Plan[] = [
 ];
 
 export const addOns: [string, string][] = [
-  ["Your own +94 phone number", "Rs 2,500 / month"],
+  ["Your own +94 phone number", "On request"],
   ["Each extra property, same owner", "Rs 9,900 / month"],
   ["Call insights report", "Rs 3,000 / month"],
   ["Low-season pause, May to September", "Rs 4,000 / month"],
@@ -200,7 +200,7 @@ export const faqs: [string, string][] = [
   ],
   [
     "How do guests reach it?",
-    "With a QR code and link on the check-in card or in your welcome message. Custom plans include a local phone number, and any plan can add one for Rs 2,500 a month.",
+    "With a QR code and link on the check-in card or in your welcome message. Calls and messages on your own WhatsApp number are coming soon. A normal local phone line is available on request.",
   ],
   [
     "Is there a setup fee?",

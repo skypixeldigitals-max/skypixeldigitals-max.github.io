@@ -4,6 +4,7 @@ import { WhatsAppIcon } from "@/components/Chrome";
 import ConciergeForm from "@/components/ConciergeForm";
 import Savings from "@/components/Savings";
 import {
+  addOns,
   audiences,
   conciergeWhatsApp,
   differences,
@@ -19,7 +20,7 @@ import {
 export const metadata: Metadata = {
   title: "Leona Concierge | 24/7 digital concierge for hotels, villas and tour companies in Sri Lanka",
   description:
-    "Leona Concierge answers your guests' calls day and night in 11 languages, sells airport pickups and tours, and only alerts you when something really needs you. Built by a hotel and travel team on Sri Lanka's south coast.",
+    "Leona Concierge answers your guests' calls day and night in 6 languages, sells airport pickups and tours, and only alerts you when something really needs you. Built by a hotel and travel team on Sri Lanka's south coast.",
   openGraph: {
     title: "Leona Concierge | Your guests, answered day and night",
     description:
@@ -91,7 +92,7 @@ export default function Concierge() {
                 </a>
               </div>
               <p className="mt-8 text-sm text-white/60">
-                From Rs 19,900 a month, under a third of the cost of one hire ·{" "}
+                From Rs {plans[0].price} a month, free setup ·{" "}
                 {languages.length} languages · Built in Galle
               </p>
             </div>
@@ -191,7 +192,7 @@ export default function Concierge() {
         <section data-tone="light" className="bg-paper">
           <div className="wrap section grid grid-cols-[1fr_1.4fr] gap-20 max-md:grid-cols-1 max-md:gap-10">
             <Heading eyebrow="Who it's for">
-              Made for <span className="accent">every</span> stay
+              Made for <span className="accent">every</span> front desk
             </Heading>
             <ul className="grid grid-cols-2 gap-x-10 gap-y-10 max-md:grid-cols-1 max-md:gap-y-8">
               {audiences.map((a) => (
@@ -254,7 +255,7 @@ export default function Concierge() {
                 )}
               </ul>
               <p className="mt-6 text-sm leading-[1.6] text-white/55">
-                Tour companies are priced by call volume rather than rooms. Ask us for a plan.
+                Every plan is priced by call volume, so tour companies pick from the same plans.
               </p>
             </figure>
           </div>
@@ -298,16 +299,16 @@ export default function Concierge() {
                 Pick your <span className="accent">plan</span>
               </Heading>
               <p className="max-w-[24rem] pb-2 text-body leading-[1.75] text-muted">
-                Every plan includes the voice concierge, Sinhala on WhatsApp and instant alerts
-                to you or your team. Lower rates from May to October.
+                Priced by how many calls you get, not your type of business. Every plan has free
+                setup, instant alerts to you or your team, and you can change plan any month.
               </p>
             </div>
 
-            <div className="mt-16 grid grid-cols-3 gap-5 max-md:grid-cols-1">
+            <div className="mt-16 grid grid-cols-4 gap-5 max-lg:grid-cols-2 max-md:grid-cols-1">
               {plans.map((p) => (
                 <article
                   key={p.name}
-                  className={`flex flex-col rounded-sm border p-9 max-md:p-7 ${
+                  className={`flex flex-col rounded-sm border p-8 max-md:p-7 ${
                     p.featured ? "border-forest bg-forest text-white" : "border-rule bg-white"
                   }`}
                 >
@@ -321,12 +322,13 @@ export default function Concierge() {
                   <h3 className="mt-4 font-display text-title tracking-[0.04em] uppercase">{p.name}</h3>
                   <p className={`mt-2 text-sm ${p.featured ? "text-white/70" : "text-muted"}`}>{p.forWho}</p>
                   <div className={`mt-7 border-t pt-6 ${p.featured ? "border-white/15" : "border-rule"}`}>
-                    <p>
-                      <span className="text-[2.4rem] font-semibold tracking-tight">Rs {p.price}</span>
+                    <p className="whitespace-nowrap">
+                      <span className="text-[2rem] font-semibold tracking-tight">Rs {p.price}</span>
                       <span className={`ml-1 text-sm ${p.featured ? "text-white/70" : "text-muted"}`}>/ month</span>
                     </p>
                     <p className={`mt-2 text-sm ${p.featured ? "text-white/70" : "text-muted"}`}>
-                      Rs {p.low} / month May to Oct · Setup Rs {p.setup}
+                      <span className={`font-semibold ${p.featured ? "text-gold" : "text-gold-text"}`}>Free setup</span> · {p.calls} a month
+                      {p.extra && <> · extra minutes Rs {p.extra}</>}
                     </p>
                   </div>
                   <ul className="mt-7 space-y-3.5">
@@ -356,22 +358,38 @@ export default function Concierge() {
                           : "border-forest text-forest hover:bg-forest hover:text-white"
                       }`}
                     >
-                      Start with {p.name}
+                      {p.extra ? `Start with ${p.name}` : "Ask for a quote"}
                     </a>
                   </div>
                 </article>
               ))}
             </div>
 
-            <div className="mt-10 grid grid-cols-[1fr_auto] items-center gap-8 border-t border-rule pt-8 max-md:grid-cols-1">
-              <p className="text-body text-ink">
-                <strong className="font-semibold">Founding offer:</strong> the first 3 properties get 50% off
-                setup and the first month free. Larger hotels, resorts, groups with several
-                properties and tour companies get a custom plan.
-              </p>
-              <p className="text-sm text-muted">
-                Extra call minutes Rs 65 · Extra WhatsApp replies Rs 20 · <span className="text-gold-text font-semibold">Soon</span> = launching with WhatsApp
-              </p>
+            <div className="mt-10 grid grid-cols-[1fr_1fr] gap-12 border-t border-rule pt-8 max-md:grid-cols-1 max-md:gap-8">
+              <div>
+                <h3 className="text-sm font-semibold tracking-[0.16em] text-gold-text uppercase">Add-ons</h3>
+                <dl className="mt-4 divide-y divide-rule border-y border-rule text-body">
+                  {addOns.map(([name, price]) => (
+                    <div key={name} className="flex justify-between gap-6 py-3">
+                      <dt className="text-ink">{name}</dt>
+                      <dd className="shrink-0 text-muted">{price}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+              <div className="space-y-4 text-body text-ink">
+                <p>
+                  <strong className="font-semibold">Founding offer:</strong> the first 3 businesses get
+                  the first month at half price, on a 3-month minimum.
+                </p>
+                <p>
+                  <strong className="font-semibold">Pay yearly:</strong> pay 12 months up front and get
+                  2 months free.
+                </p>
+                <p className="text-sm text-muted">
+                  <span className="text-gold-text font-semibold">Soon</span> = launching with WhatsApp
+                </p>
+              </div>
             </div>
           </div>
         </section>

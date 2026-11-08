@@ -1,25 +1,23 @@
 /**
- * Copy for /concierge. Prices are monthly in LKR; `low` is the May–October
- * rate. Costs and margins live in the internal price sheet, never here.
+ * Copy for /concierge. Prices are monthly in LKR with free setup.
+ * Costs and margins live in the internal price sheet, never here.
  */
 
 export const conciergeWhatsApp =
   "https://wa.me/94740591853?text=" +
   encodeURIComponent("Hi Leona, I'd like a demo of Leona Concierge for my property in ");
 
-export const languages = [
-  "English", "Arabic", "Chinese", "Dutch", "French", "German",
-  "Hindi", "Italian", "Polish", "Russian", "Tamil",
-];
+/** Must match the languages switched on for the agent in ElevenLabs. */
+export const languages = ["English", "Arabic", "German", "Hindi", "Russian", "Tamil"];
 
-/** A real test call, trimmed. Gayan is the concierge for our demo villa. */
+/** A real test call, trimmed. Nuwan is the concierge for our demo villa. */
 export const sampleCall: { who: "guest" | "gayan" | "alert"; text: string }[] = [
-  { who: "gayan", text: "Hi, Seaview Villa, Gayan speaking. I'm the villa's digital assistant. How can I help?" },
+  { who: "gayan", text: "Hi, Seaview Villa, Nuwan speaking. I'm the villa's digital assistant. How can I help?" },
   { who: "guest", text: "I'm locked out of my room. I think they gave me the wrong key." },
   { who: "gayan", text: "Easy fix, staff have spares. What's your room number?" },
   { who: "guest", text: "Room four." },
-  { who: "alert", text: "Owner alerted · Wrong key, Room 4 · send Nuwan with the spare" },
-  { who: "gayan", text: "Done. Nuwan's bringing the right key to room four now." },
+  { who: "alert", text: "Owner alerted · Wrong key, Room 4 · send Gayan with the spare" },
+  { who: "gayan", text: "Done. Gayan's bringing the right key to room four now." },
   { who: "guest", text: "Also, we fly out tomorrow at 8 pm. Can you sort a car?" },
   { who: "gayan", text: "Pickup at two works for an 8 pm flight. Car for three is twenty thousand rupees. Shall I book it?" },
   { who: "alert", text: "Owner alerted · Airport transfer, tomorrow 2 pm · Total: Rs 20,000" },
@@ -47,6 +45,8 @@ export const audiences = [
   { title: "Resorts and large hotels", text: "It takes the overflow at peak times, and calls in languages your team doesn't speak, around the clock." },
   { title: "Hostels", text: "Travellers get checkout times, locker rules and bus routes without queuing at the desk." },
   { title: "Property managers and groups", text: "One setup per property, one dashboard for every alert and every extra sold." },
+  { title: "Cafés and restaurants", text: "Table bookings, opening hours and allergy questions get answered while your staff keep serving." },
+  { title: "Salons and spas", text: "Appointment requests and price questions come in at any hour and land on your phone as one short note." },
 ];
 
 /** Tour and transfer companies: the same concierge, answering travellers instead of hotel guests. */
@@ -100,62 +100,81 @@ export type Plan = {
   name: string;
   forWho: string;
   price: string;
-  low: string;
-  setup: string;
+  calls: string;
+  extra?: string;
   featured?: boolean;
   intro?: string;
   items: { text: string; soon?: boolean }[];
 };
 
+/** Priced by call volume, not business type. Setup is free and folded into the monthly price. */
 export const plans: Plan[] = [
   {
-    name: "Essential",
-    forWho: "Villas, homestays and small guest houses, up to 6 rooms",
-    price: "19,900",
-    low: "14,900",
-    setup: "30,000",
+    name: "Starter",
+    forWho: "Homestays and small villas",
+    price: "14,900",
+    calls: "about 25 calls",
+    extra: "250",
     items: [
-      { text: "Voice concierge, 100 call minutes a month" },
-      { text: "Answers in 11 languages" },
-      { text: "Sinhala replies on WhatsApp", soon: true },
-      { text: "1,000 WhatsApp replies a month", soon: true },
+      { text: "Voice concierge, 60 call minutes a month" },
+      { text: `Answers in ${languages.length} languages` },
       { text: "Instant alerts to you or your team, quiet at night" },
       { text: "Dashboard with every request" },
+      { text: "300 WhatsApp replies a month", soon: true },
     ],
   },
   {
-    name: "Signature",
-    forWho: "Guest houses, hostels and small hotels, 5 to 12 rooms",
-    price: "32,900",
-    low: "24,700",
-    setup: "40,000",
+    name: "Standard",
+    forWho: "Villas and guest houses",
+    price: "24,900",
+    calls: "about 60 calls",
+    extra: "200",
     featured: true,
-    intro: "Everything in Essential, plus",
+    intro: "Everything in Starter, plus",
     items: [
-      { text: "200 call minutes a month" },
-      { text: "2,000 WhatsApp replies a month", soon: true },
-      { text: "Sells extras: pickups, tours, late checkout" },
-      { text: "Welcome, day-two and checkout messages", soon: true },
-      { text: "Unhappy-guest warnings before they review" },
+      { text: "150 call minutes a month" },
+      { text: "600 WhatsApp replies a month", soon: true },
+      { text: "Sinhala replies on WhatsApp", soon: true },
+      { text: "Sells your extras: pickups, tours, add-ons" },
       { text: "Monthly report of extras earned" },
     ],
   },
   {
-    name: "Estate",
-    forWho: "Boutique hotels and small resorts, 13 to 25 rooms",
-    price: "59,900",
-    low: "44,900",
-    setup: "50,000",
-    intro: "Everything in Signature, plus",
+    name: "Pro",
+    forWho: "Small hotels and tours",
+    price: "44,900",
+    calls: "about 120 calls",
+    extra: "160",
+    intro: "Everything in Standard, plus",
     items: [
-      { text: "400 call minutes a month" },
-      { text: "4,000 WhatsApp replies a month", soon: true },
-      { text: "Your own local phone number" },
-      { text: "Staff alerts for housekeeping" },
+      { text: "300 call minutes a month" },
+      { text: "1,000 WhatsApp replies a month", soon: true },
+      { text: "Welcome, follow-up and goodbye messages", soon: true },
+      { text: "Unhappy-customer warnings before they review" },
+      { text: "Staff alerts for housekeeping or ops" },
       { text: "Priority support, same-day changes" },
+    ],
+  },
+  {
+    name: "Custom",
+    forWho: "Resorts and groups",
+    price: "75,000+",
+    calls: "minutes set to your volume",
+    intro: "Everything in Pro, plus",
+    items: [
+      { text: "Minutes and replies sized to your business" },
+      { text: "Your own local phone number" },
+      { text: "One dashboard for every property" },
       { text: "Quarterly review with Leona" },
     ],
   },
+];
+
+export const addOns: [string, string][] = [
+  ["Your own +94 phone number", "Rs 2,500 / month"],
+  ["Each extra property, same owner", "Rs 9,900 / month"],
+  ["Call insights report", "Rs 3,000 / month"],
+  ["Low-season pause, May to September", "Rs 4,000 / month"],
 ];
 
 export const faqs: [string, string][] = [
@@ -181,7 +200,11 @@ export const faqs: [string, string][] = [
   ],
   [
     "How do guests reach it?",
-    "With a QR code and link on the check-in card or in your welcome message. Estate includes a local phone number, and any plan can add one.",
+    "With a QR code and link on the check-in card or in your welcome message. Custom plans include a local phone number, and any plan can add one for Rs 2,500 a month.",
+  ],
+  [
+    "Is there a setup fee?",
+    "No. Setup is free on every plan. We learn your business, set up the concierge and test it with you before it goes live.",
   ],
   [
     "Can it take bookings or payments?",
@@ -189,7 +212,7 @@ export const faqs: [string, string][] = [
   ],
   [
     "What if we use more than our minutes?",
-    "Extra call minutes are Rs 65 each and extra WhatsApp replies Rs 20 each. We'll tell you before you get close, and you can move up a plan at any time.",
+    "Extra call minutes are Rs 250 on Starter, Rs 200 on Standard and Rs 160 on Pro. We'll tell you before you get close, and if you often go over, moving up a plan works out cheaper. You can change plan any month.",
   ],
   [
     "What happens to guest calls and data?",

@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 
-const PLAN = { name: "Signature", price: 32900 };
+const PLAN = { name: "Standard", price: 24900 };
 const rs = (n: number) => "Rs " + Math.round(n).toLocaleString("en-LK");
 const million = (n: number) =>
   n >= 1_000_000 ? `Rs ${(n / 1_000_000).toFixed(2)} million` : rs(Math.round(n / 1000) * 1000);
 
 /**
- * One multilingual guest relations officer vs the Signature plan.
+ * One multilingual guest relations officer vs the Standard plan.
  * Salary range: 2026 job ads on the south coast (Weligama Bay Marriott
  * Rs 70,000; Lanka Island Resorts Rs 60,000; Radisson Blu Galle Rs 80,000; Aitken Spence Russian language
  * specialist Rs 125,000). EPF 12% and ETF 3% are the employer's legal share.

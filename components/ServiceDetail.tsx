@@ -41,17 +41,6 @@ export default function ServiceDetail() {
 
   return (
     <section id="services" data-chapter="04" data-tone="light" className="relative bg-bone">
-      {/* King coconuts hanging from the top edge, right-hand corner, the way
-          they hang at every roadside stall on the south coast. */}
-      <img
-        src="/brand/king-coconut-hanging.webp"
-        alt=""
-        loading="lazy"
-        decoding="async"
-        width={440}
-        height={429}
-        className="pointer-events-none absolute top-0 right-[19vw] w-[13rem] drop-shadow-[0_22px_26px_rgba(20,35,29,0.18)] max-md:right-4 max-md:w-[6.5rem]"
-      />
       <div className="wrap section">
         <div className="flex items-end justify-between gap-16 max-md:flex-col max-md:items-start max-md:gap-6">
           <div>
@@ -62,7 +51,7 @@ export default function ServiceDetail() {
               <span className="accent text-gold">done properly</span>
             </h2>
           </div>
-          <div className="flex flex-col items-end gap-6 pt-[7rem] max-md:items-start max-md:pt-0">
+          <div className="flex flex-col items-end gap-6 max-md:items-start">
             <p className="copy max-w-[22rem] pb-3 text-right text-muted max-md:pb-0 max-md:text-left">
               Every villa we take on gets all four. Most owners only ever had one.
             </p>

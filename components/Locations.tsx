@@ -88,7 +88,7 @@ export default function Locations() {
                   ref={(el) => {
                     numRefs.current[i] = el;
                   }}
-                  className="text-[5rem] leading-none font-semibold text-gold tabular-nums drop-shadow-[0_2px_14px_rgba(0,0,0,0.35)] max-md:text-[3.4rem]"
+                  className="text-[5rem] leading-none font-semibold text-white tabular-nums drop-shadow-[0_2px_14px_rgba(0,0,0,0.35)] max-md:text-[3.4rem]"
                 >
                   {s.value}
                 </span>

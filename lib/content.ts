@@ -233,7 +233,7 @@ export const team = {
     {
       name: "Devike - Co-Founder",
       bio: "Interior architect with years of industry experience.",
-      img: "/brand/p-devike.webp",
+      img: "/brand/p-devike-v2.webp",
       // left / width / bio-block offsets as drawn in Frame 34
       left: "6.25rem",
       width: "18.75rem",

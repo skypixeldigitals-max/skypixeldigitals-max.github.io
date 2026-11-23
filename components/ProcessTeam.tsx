@@ -1,5 +1,4 @@
 import { process, processSection, team } from "@/lib/content";
-import Drift from "@/components/Drift";
 
 /**
  * "We don't just design beautiful spaces. We design spaces that rank." —
@@ -98,20 +97,10 @@ export function Founders() {
                   {para}
                 </p>
               ))}
-              <div className="flex items-end justify-between gap-6 pt-2">
+              <div className="pt-2">
                 <p className="font-display text-[1.6rem] leading-none text-gold">
                   &mdash; {team.signoff}
                 </p>
-                {/* The king coconut from "our evenings were at the pool". */}
-                <Drift distance={24} className="-mb-10 w-[9.5rem] shrink-0 max-md:-mb-4 max-md:w-24">
-                  <img
-                    src="/brand/king-coconut.webp"
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full -rotate-6 drop-shadow-[0_18px_24px_rgba(0,0,0,0.35)]"
-                  />
-                </Drift>
               </div>
             </div>
           </div>

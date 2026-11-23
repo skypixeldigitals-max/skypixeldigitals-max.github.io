@@ -13,13 +13,16 @@ export default function Veranda() {
           <img
             src="/brand/tropical-veranda.webp"
             alt="A rattan lounger and a king coconut on a shaded villa veranda facing the beach"
+            width={2400}
+            height={1018}
             loading="lazy"
             decoding="async"
             className="h-full w-full object-cover object-[38%_60%]"
           />
         </picture>
       </Drift>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest-deep/85 via-forest-deep/20 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest-deep/90 via-forest-deep/55 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-forest-deep/45 via-transparent to-transparent" />
 
       <div className="wrap relative flex h-full flex-col justify-end pb-16 text-white max-md:pb-28">
         <h2 className="h-display">

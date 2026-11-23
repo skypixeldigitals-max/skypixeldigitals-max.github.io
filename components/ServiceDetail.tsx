@@ -94,7 +94,7 @@ export default function ServiceDetail() {
                   </p>
                   <a
                     href="#enquire"
-                    className="mt-5 inline-flex min-h-11 items-center gap-2 text-eyebrow font-semibold tracking-[0.22em] text-blue uppercase transition-[gap,color] duration-200 hover:gap-4 hover:text-blue-bright"
+                    className="mt-5 inline-flex min-h-11 items-center gap-2 text-eyebrow font-semibold tracking-[0.22em] text-gold-text uppercase transition-[gap,color] duration-200 hover:gap-4 hover:text-forest"
                   >
                     Ask about this
                     <span aria-hidden>→</span>

@@ -64,13 +64,18 @@ export default function Locations() {
       data-tone="dark"
       className="relative h-screen min-h-[40rem] overflow-hidden bg-forest-deep max-md:h-auto max-md:min-h-[100svh]"
     >
-      <img
-        src="/brand/aerial.webp"
-        alt="The south coast of Sri Lanka from the air"
-        className="absolute inset-0 h-full w-full object-cover"
-        loading="lazy"
-        decoding="async"
-      />
+      <picture>
+        <source media="(max-width: 767px)" srcSet="/brand/aerial-m.webp" />
+        <img
+          src="/brand/aerial.webp"
+          alt="The south coast of Sri Lanka from the air"
+          width={2752}
+          height={1536}
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-forest-deep/80 via-forest-deep/25 to-transparent max-md:h-[75%]" />
 
       <div className="wrap relative flex h-full items-end pb-20 text-white max-md:min-h-[100svh] max-md:pt-32 max-md:pb-28">

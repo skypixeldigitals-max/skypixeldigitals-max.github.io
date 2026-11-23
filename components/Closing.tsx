@@ -84,13 +84,20 @@ export function Dashboard() {
 
         <Reveal delay={180}>
           <div className="mt-20 overflow-hidden rounded-lg border border-rule shadow-[0_24px_60px_-24px_rgba(20,35,29,0.25)]">
-            <img
-              loading="lazy"
-              decoding="async"
-              src="/brand/dashboard-mock.webp"
-              alt="The Leona owner dashboard showing revenue, occupancy, upcoming bookings and maintenance"
-              className="w-full"
-            />
+            {/* Phones get the revenue and bookings panels stacked, so the
+                numbers are readable instead of shrunk to a blur. */}
+            <picture>
+              <source media="(max-width: 767px)" srcSet="/brand/dashboard-mock-m.webp" width={500} height={1007} />
+              <img
+                loading="lazy"
+                decoding="async"
+                src="/brand/dashboard-mock.webp"
+                alt="The Leona owner dashboard showing revenue, occupancy, upcoming bookings and maintenance"
+                width={1536}
+                height={1024}
+                className="h-auto w-full"
+              />
+            </picture>
           </div>
         </Reveal>
 
@@ -120,7 +127,7 @@ export function Contact() {
   const [busy, setBusy] = useState(false);
 
   const field =
-    "h-14 w-full rounded-sm border border-forest/15 bg-white px-4 text-body text-ink transition placeholder:text-ink/55 focus:border-blue";
+    "h-14 w-full rounded-sm border border-forest/15 bg-white px-4 text-body text-ink transition placeholder:text-ink/55 focus:border-gold-text";
 
   return (
     <section id="contact" data-chapter="08" data-tone="light" className="bg-paper">
@@ -143,14 +150,14 @@ export function Contact() {
                 ["Response time", brand.responseTime, ""],
               ].map(([k, v, href]) => (
                 <div key={k}>
-                  <dt className="text-[0.68rem] font-semibold tracking-[0.24em] text-muted uppercase">
+                  <dt className="text-[0.75rem] font-semibold tracking-[0.2em] text-muted uppercase">
                     {k}
                   </dt>
                   <dd className="mt-2 text-body text-forest">
                     {href ? (
                       <a
                         href={href}
-                        className="inline-flex min-h-8 items-center gap-2 underline-offset-4 hover:underline"
+                        className="inline-flex min-h-11 items-center gap-2 whitespace-nowrap underline-offset-4 hover:underline"
                         {...(k === "WhatsApp" ? { target: "_blank", rel: "noopener" } : {})}
                       >
                         {k === "WhatsApp" && <WhatsAppIcon className="h-4 w-4" />}
@@ -169,7 +176,8 @@ export function Contact() {
         <Reveal delay={120}>
           {sent ? (
             <div className="border-l-2 border-gold pl-6 text-body leading-[1.75] text-forest">
-              Thank you — we&apos;ll be in touch within 24 hours.
+              WhatsApp should now be open with your details filled in. Press send
+              and we&apos;ll be in touch within 24 hours.
             </div>
           ) : (
             <form
@@ -209,15 +217,15 @@ export function Contact() {
                   name="message"
                   rows={5}
                   placeholder="Bedrooms, how it's run today, what you'd like to change"
-                  className="w-full rounded-sm border border-forest/15 bg-white px-4 py-4 text-body text-ink transition placeholder:text-ink/55 focus:border-blue"
+                  className="w-full rounded-sm border border-forest/15 bg-white px-4 py-4 text-body text-ink transition placeholder:text-ink/55 focus:border-gold-text"
                 />
               </Labelled>
               <button
                 type="submit"
                 disabled={busy}
-                className="h-14 w-full cursor-pointer rounded-sm bg-blue text-[0.78rem] font-semibold tracking-[0.14em] text-white uppercase transition hover:bg-blue-bright disabled:opacity-60"
+                className="h-14 w-full cursor-pointer rounded-sm bg-gold text-[0.78rem] font-semibold tracking-[0.14em] text-forest-deep uppercase transition hover:bg-gold-bright disabled:opacity-60"
               >
-                {busy ? "Sending…" : contact.submitLabel}
+                {busy ? "Opening WhatsApp…" : contact.submitLabel}
               </button>
               <WhatsAppFallback tone="light" />
             </form>
@@ -236,30 +244,29 @@ export function Footer() {
     ["/#team", "Who we are"],
     ["/#enquire", "Get an estimate"],
     ["/concierge/", "Leona Concierge"],
-    ["/dashboard", "Owner dashboard"],
   ];
   return (
     <footer className="bg-forest-deep max-md:pb-24">
       <div className="wrap grid grid-cols-[auto_1fr_auto] items-start gap-16 py-[3.5rem] max-md:grid-cols-1 max-md:gap-10">
         <div>
-          <img loading="lazy" src="/brand/logo-shield.webp" alt="Leona Properties" className="h-10 w-auto brightness-0 invert" />
+          <img loading="lazy" src="/brand/logo-shield.webp" alt="Leona Properties" width={257} height={182} className="h-10 w-auto brightness-0 invert" />
           <p className="mt-5 max-w-[16rem] text-sm leading-[1.7] text-white/55">
             Villa care on Sri Lanka&apos;s south coast. Powering Ceylon stays.
           </p>
         </div>
         <nav aria-label="Footer" className="grid grid-cols-2 gap-x-10 max-md:grid-cols-1">
           {links.map(([href, label]) => (
-            <a key={href} href={href} className="inline-flex min-h-9 items-center text-sm text-white/70 transition-colors hover:text-white">
+            <a key={href} href={href} className="inline-flex min-h-11 items-center text-sm text-white/70 transition-colors hover:text-white">
               {label}
             </a>
           ))}
         </nav>
         <div className="text-sm text-white/70">
-          <a href={brand.phoneHref} className="inline-flex min-h-9 items-center hover:text-white">{brand.phone}</a>
+          <a href={brand.phoneHref} className="inline-flex min-h-11 items-center hover:text-white">{brand.phone}</a>
           <br />
-          <a href={`mailto:${brand.email}`} className="inline-flex min-h-9 items-center hover:text-white">{brand.email}</a>
+          <a href={`mailto:${brand.email}`} className="inline-flex min-h-11 items-center hover:text-white">{brand.email}</a>
           <br />
-          <a href={brand.whatsapp} target="_blank" rel="noopener" className="inline-flex min-h-9 items-center gap-2 hover:text-white">
+          <a href={brand.whatsapp} target="_blank" rel="noopener" className="inline-flex min-h-11 items-center gap-2 hover:text-white">
             <WhatsAppIcon className="h-4 w-4" /> WhatsApp
           </a>
         </div>

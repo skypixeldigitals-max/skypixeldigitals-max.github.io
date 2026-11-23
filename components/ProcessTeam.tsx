@@ -1,5 +1,13 @@
 import { process, processSection, team } from "@/lib/content";
 
+/** Pixel sizes of the team cut-outs, so their boxes are reserved before they load. */
+const PORTRAIT_SIZE: Record<string, [number, number]> = {
+  "/brand/p-devike-v2.webp": [300, 564],
+  "/brand/p-dhammika-v3.webp": [605, 459],
+  "/brand/p-thareen-v7.webp": [1080, 972],
+  "/brand/p-devangi-v3.webp": [509, 627],
+};
+
 /**
  * "We don't just design beautiful spaces. We design spaces that rank." —
  * the team in their Leona polos on the left (a 3:4 portrait, so the column is
@@ -74,13 +82,18 @@ export function Founders() {
       <div className="wrap section">
         <div className="grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] items-center gap-20 max-md:grid-cols-1 max-md:gap-10">
           <figure className="relative">
-            <img
-              loading="lazy"
-              decoding="async"
-              src="/brand/siblings.webp"
-              alt="Devike and Devangi, the founders of Leona Properties"
-              className="aspect-[4/5] w-full object-cover"
-            />
+            <picture>
+              <source media="(max-width: 767px)" srcSet="/brand/siblings-m.webp" />
+              <img
+                loading="lazy"
+                decoding="async"
+                src="/brand/siblings.webp"
+                alt="Devike and Devangi, the founders of Leona Properties"
+                width={1600}
+                height={2000}
+                className="aspect-[4/5] w-full object-cover"
+              />
+            </picture>
             {/* Hairline frame offset from the photograph, like the Process image. */}
             <span aria-hidden className="pointer-events-none absolute -inset-3 border border-gold/40 max-md:-inset-2" />
           </figure>
@@ -143,6 +156,8 @@ export function Team() {
                     decoding="async"
                     src={m.img}
                     alt={name}
+                    width={PORTRAIT_SIZE[m.img]?.[0]}
+                    height={PORTRAIT_SIZE[m.img]?.[1]}
                     className="absolute bottom-0 left-1/2 h-full max-w-none -translate-x-1/2 object-contain object-bottom transition-transform duration-500 ease-out group-hover:-translate-y-2 group-hover:scale-[1.03]"
                   />
                 </div>
@@ -150,7 +165,7 @@ export function Team() {
                 <h4 className="mt-7 text-lead font-semibold text-white transition-colors duration-300 group-hover:text-blue-bright">
                   {name}
                 </h4>
-                <p className="mt-1 text-[0.72rem] font-semibold tracking-[0.2em] text-blue-soft uppercase">
+                <p className="mt-1 text-[0.78rem] font-semibold tracking-[0.18em] text-blue-soft uppercase">
                   {role}
                 </p>
                 <span className="mt-5 block h-px w-8 bg-gold/50 transition-all duration-300 group-hover:w-14" />

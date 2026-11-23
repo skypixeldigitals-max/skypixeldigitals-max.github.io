@@ -4,19 +4,20 @@ import { useState } from "react";
 import { sendEnquiry } from "@/lib/enquiry";
 import { Labelled, WhatsAppFallback } from "@/components/Chrome";
 
-/** Demo request. Same mailto route as the main site's forms. */
+/** Demo request. Opens WhatsApp, the same as the main site's forms. */
 export default function ConciergeForm() {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
 
   const field =
-    "h-14 w-full rounded-sm border border-white/20 bg-white/[0.04] px-4 text-body text-white transition placeholder:text-white/50 focus:border-blue-bright focus:bg-white/[0.07]";
+    "h-14 w-full rounded-sm border border-white/20 bg-white/[0.04] px-4 text-body text-white transition placeholder:text-white/50 focus:border-gold focus:bg-white/[0.07]";
 
   if (sent) {
     return (
       <p role="status" className="mt-14 max-w-[42rem] border-l-2 border-gold pl-6 text-body leading-[1.75] text-white/85">
-        Thank you. We&apos;ll message you within 24 hours to set up a short demo call
-        with a concierge trained on a real property.
+        WhatsApp should now be open with your details filled in. Press send and
+        we&apos;ll message you within 24 hours to set up a short demo call with a
+        concierge trained on a real property.
       </p>
     );
   }
@@ -35,7 +36,7 @@ export default function ConciergeForm() {
             sendEnquiry(data, "concierge");
             setSent(true);
           } catch {
-            setError("Couldn't open your mail app. Use WhatsApp below instead.");
+            setError("WhatsApp didn't open. Use the WhatsApp link below instead.");
           }
         }}
       >
@@ -50,7 +51,7 @@ export default function ConciergeForm() {
         </Labelled>
         <button
           type="submit"
-          className="h-14 cursor-pointer rounded-sm bg-blue px-12 text-[0.78rem] font-semibold tracking-[0.14em] text-white uppercase transition hover:bg-blue-bright"
+          className="h-14 cursor-pointer rounded-sm bg-gold px-12 text-[0.78rem] font-semibold tracking-[0.14em] text-forest-deep uppercase transition hover:bg-gold-bright"
         >
           <span className="swap">
             <span>Book a demo</span>

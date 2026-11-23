@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 };
 
 const btnPrimary =
-  "inline-flex h-14 items-center justify-center gap-2 rounded-sm bg-blue px-10 text-[0.78rem] font-semibold tracking-[0.14em] text-white uppercase transition hover:bg-blue-bright";
+  "inline-flex h-14 items-center justify-center gap-2 rounded-sm bg-gold px-10 text-[0.78rem] font-semibold tracking-[0.14em] text-forest-deep uppercase transition hover:bg-gold-bright";
 const btnGhost =
   "inline-flex h-14 items-center justify-center rounded-sm border px-10 text-[0.78rem] font-semibold tracking-[0.14em] uppercase transition";
 

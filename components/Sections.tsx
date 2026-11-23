@@ -42,6 +42,8 @@ export function PlatformBar() {
             decoding="async"
             src={platforms[0].src}
             alt={platforms[0].name}
+            width={276}
+            height={138}
             className="h-[2.875rem] w-auto object-contain brightness-0 invert"
           />
           <img
@@ -49,6 +51,8 @@ export function PlatformBar() {
             decoding="async"
             src={platforms[1].src}
             alt={platforms[1].name}
+            width={601}
+            height={102}
             className="h-[2.125rem] w-auto object-contain brightness-0 invert"
           />
         </div>
@@ -58,6 +62,8 @@ export function PlatformBar() {
             decoding="async"
             src={platforms[2].src}
             alt={platforms[2].name}
+            width={271}
+            height={126}
             className="h-[2.625rem] w-auto object-contain brightness-0 invert"
           />
           <img
@@ -65,6 +71,8 @@ export function PlatformBar() {
             decoding="async"
             src={platforms[3].src}
             alt={platforms[3].name}
+            width={363}
+            height={114}
             className="h-[2.375rem] w-auto object-contain brightness-0 invert"
           />
         </div>

@@ -27,6 +27,9 @@ const mobileX = (x: number) =>
  *
  * Transform-only, rAF-throttled, reduced-motion aware. Frames start loading
  * after the window `load` event so they never compete with the poster (LCP).
+ *
+ * Phones skip the frame sequence altogether and show one still photograph:
+ * decoding 49 frames on scroll was the main cost on phone load times.
  */
 export default function Hero() {
   const wrapRef = useRef<HTMLElement>(null);
@@ -70,6 +73,7 @@ export default function Hero() {
         img.src = framePath(i, mobile);
       });
     const start = async () => {
+      if (mobile) return; // phones show the still photograph instead
       await loadOne(0);
       if (disposed) return;
       ready = true;
@@ -170,11 +174,11 @@ export default function Hero() {
       id="top"
       data-chapter="00"
       data-tone="dark"
-      className="relative h-[200vh] max-md:h-[160vh]"
+      className="relative h-[200vh] max-md:h-[100svh]"
       onClick={() => setOpen(null)}
     >
       <div
-        className="sticky top-0 h-screen overflow-hidden"
+        className="sticky top-0 h-screen overflow-hidden max-md:h-[100svh]"
         style={{
           background:
             "linear-gradient(to bottom, #1f6cb0 0%, #2578ba 55%, #287bbe 100%)",
@@ -189,17 +193,36 @@ export default function Hero() {
               paints instantly; the canvas takes over the lower 4:3 the
               moment the first frame has decoded. Hidden on phones, where the
               first frame is the poster. */}
-          <img
-            src="/brand/services/establishing-tall.webp"
-            alt="A Leona team at work around a villa pool at golden hour"
-            className="absolute inset-0 h-full w-full max-md:hidden"
-            decoding="async"
-            fetchPriority="high"
-          />
+          {/* The blank phone source stops phones downloading this 436 KB
+              poster, which they never show. */}
+          <picture>
+            <source media="(max-width: 767px)" srcSet="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+            <img
+              src="/brand/services/establishing-tall.webp"
+              alt="A Leona team at work around a villa pool at golden hour"
+              width={2400}
+              height={2400}
+              className="absolute inset-0 h-full w-full max-md:hidden"
+              decoding="async"
+              fetchPriority="high"
+            />
+          </picture>
           {/* The photograph proper. Dots are positioned against this box so
               their percentages stay relative to the image. */}
           <div className="absolute inset-x-0 bottom-0 aspect-[4/3] w-full max-md:aspect-[3/4]">
-            <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" aria-hidden />
+            {/* Phones: one still photograph in place of the animation. */}
+            <picture>
+              <source media="(min-width: 768px)" srcSet="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+              <img
+                src="/brand/hero-still-m.webp"
+                alt="A Leona team at work around a villa pool at golden hour"
+                width={810}
+                height={1080}
+                className="absolute inset-0 h-full w-full object-cover md:hidden"
+                fetchPriority="high"
+              />
+            </picture>
+            <canvas ref={canvasRef} className="absolute inset-0 h-full w-full max-md:hidden" aria-hidden />
             {/* Feather the (static) sky at the top of the video into the poster. */}
             <div
               className="pointer-events-none absolute inset-x-0 top-0 h-[14%] max-md:h-[32%]"
@@ -332,7 +355,7 @@ export default function Hero() {
         </div>
 
         {/* ---- frame-loading hairline ---- */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] bg-white/10">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] bg-white/10 max-md:hidden">
           <span
             ref={barRef}
             className="block h-full origin-left scale-x-0 bg-gold transition-opacity duration-700"

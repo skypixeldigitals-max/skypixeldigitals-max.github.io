@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
@@ -21,6 +21,11 @@ const body = Montserrat({
 });
 
 const SITE = "https://skypixeldigitals-max.github.io";
+
+/** Phone browsers tint their address bar with this: the brand's deep forest. */
+export const viewport: Viewport = {
+  themeColor: "#133026",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),

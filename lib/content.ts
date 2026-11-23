@@ -254,7 +254,7 @@ export const team = {
     {
       name: "Thareen - Hospitality Specialist",
       bio: "A national-level barista specialist and consultant in speciality coffee with deep roots in premium guest experience.",
-      img: "/brand/p-thareen-v6.webp",
+      img: "/brand/p-thareen-v7.webp",
       left: "52.8rem",
       width: "18.4rem",
       labelTop: "24.9rem",

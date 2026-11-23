@@ -13,7 +13,9 @@ function useReveal<T extends HTMLElement>(delay = 0) {
     if (!el) return;
     const io = new IntersectionObserver(
       ([e]) => {
-        if (!e.isIntersecting) return;
+        // Show it once it's on screen, or straight away if it's already
+        // above the screen (scrolled past before the page finished loading).
+        if (!e.isIntersecting && e.boundingClientRect.top > 0) return;
         el.style.transitionDelay = `${delay}ms`;
         el.style.opacity = "1";
         el.style.transform = "none";

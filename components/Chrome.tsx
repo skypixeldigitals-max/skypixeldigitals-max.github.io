@@ -40,6 +40,27 @@ export function Nav() {
     return () => io.disconnect();
   }, []);
 
+  // Off-screen sections skip layout on first load (globals.css). An in-page
+  // jump needs real heights above the target, so switch to full layout just
+  // before the browser scrolls: on the first #link tap, or straight away if
+  // the page was opened with a #hash.
+  useEffect(() => {
+    const root = document.documentElement;
+    const full = () => root.classList.add("full-layout");
+    if (location.hash) full();
+    const onClick = (e: MouseEvent) => {
+      const a = (e.target as Element | null)?.closest?.("a[href]");
+      const href = a?.getAttribute("href") ?? "";
+      if (href.startsWith("#") || href.startsWith("/#")) full();
+    };
+    document.addEventListener("click", onClick, true);
+    window.addEventListener("hashchange", full);
+    return () => {
+      document.removeEventListener("click", onClick, true);
+      window.removeEventListener("hashchange", full);
+    };
+  }, []);
+
   // The phone sticky bar would sit on top of a form's submit button, so it
   // steps aside while any form is on screen.
   useEffect(() => {
@@ -79,7 +100,7 @@ export function Nav() {
       {/* ---- round logo, top-left (ERA's mark) ---- */}
       <a
         href="#top"
-        aria-label="Leona Properties, back to top"
+        aria-label="Leona Properties · Leona Properties · back to top"
         className={`pointer-events-auto absolute left-[3.5vw] z-10 grid place-items-center transition-all duration-300 max-md:left-4 max-md:h-16 max-md:w-16 ${
           past ? "top-[0.6rem] h-[4.3rem] w-[4.3rem] max-md:top-1" : "top-8 h-[6.5rem] w-[6.5rem] max-md:top-4"
         }`}

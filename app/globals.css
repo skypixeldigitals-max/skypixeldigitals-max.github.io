@@ -239,3 +239,17 @@ button:hover > .swap > span + span     { transform: translateY(0); }
   .section-sm { padding-block: 3.5rem; }
   .copy      { max-width: none; }
 }
+
+/* Speed on phones: on first load everything below the hero skips layout and
+   paint until it is about to scroll into view, so the first screen is laid
+   out alone rather than all ~19 screens of the page at once. `auto` makes the
+   browser remember each section's real height once seen. */
+html:not(.full-layout) main > section:not(#top):not(#services):not(#contact),
+html:not(.full-layout) main > div,
+html:not(.full-layout) footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+/* Jumping to a section (menu links, "Get an estimate", a shared #link) needs
+   the real height of everything above it, so the first in-page jump adds
+   .full-layout and the page lays out in full from then on (see Nav). */

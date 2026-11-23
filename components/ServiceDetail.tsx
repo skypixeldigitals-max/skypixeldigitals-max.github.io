@@ -27,7 +27,8 @@ export default function ServiceDetail() {
     const io = new IntersectionObserver(
       (entries) =>
         entries.forEach((e) => {
-          if (!e.isIntersecting) return;
+          // On screen, or already scrolled past: either way, show it.
+          if (!e.isIntersecting && e.boundingClientRect.top > 0) return;
           const el = e.target as HTMLElement;
           el.style.opacity = "1";
           el.style.transform = "none";

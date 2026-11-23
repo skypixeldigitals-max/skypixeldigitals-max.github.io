@@ -37,7 +37,14 @@ export default function Locations() {
     let raf = 0;
     const io = new IntersectionObserver(
       ([e]) => {
-        if (!e.isIntersecting) return;
+        if (!e.isIntersecting) {
+          // Already scrolled past without seeing it: just show the totals.
+          if (e.boundingClientRect.top < 0) {
+            io.disconnect();
+            set(1);
+          }
+          return;
+        }
         io.disconnect();
         const start = performance.now();
         const DURATION = 1600;
@@ -48,9 +55,11 @@ export default function Locations() {
         };
         raf = requestAnimationFrame(tick);
       },
-      { threshold: 0.4 },
+      { threshold: 0.25 },
     );
-    io.observe(row);
+    // Watch the whole section, not just the row of numbers: it starts the
+    // count earlier and is harder to miss on a quick scroll.
+    io.observe(row.closest("section") ?? row);
     return () => {
       io.disconnect();
       cancelAnimationFrame(raf);

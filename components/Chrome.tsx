@@ -6,7 +6,6 @@ import { brand, locations } from "@/lib/content";
 
 const SECTIONS: [string, string][] = [
   ["#services", "What we do"],
-  ["#locations", "Where we work"],
   ["#team", "Who we are"],
   ["#enquire", "Get an estimate"],
   ["#contact", "Contact"],

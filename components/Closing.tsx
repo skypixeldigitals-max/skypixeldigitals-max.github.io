@@ -233,7 +233,6 @@ export function Contact() {
 export function Footer() {
   const links: [string, string][] = [
     ["/#services", "What we do"],
-    ["/#locations", "Where we work"],
     ["/#team", "Who we are"],
     ["/#enquire", "Get an estimate"],
     ["/concierge/", "Leona Concierge"],

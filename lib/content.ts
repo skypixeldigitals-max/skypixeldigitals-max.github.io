@@ -232,7 +232,7 @@ export const team = {
   members: [
     {
       name: "Devike - Co-Founder",
-      bio: "Interior designer with years of industry experience.",
+      bio: "Interior architect with years of industry experience.",
       img: "/brand/p-devike.webp",
       // left / width / bio-block offsets as drawn in Frame 34
       left: "6.25rem",

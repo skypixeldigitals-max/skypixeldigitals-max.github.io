@@ -61,7 +61,7 @@ export function Nav() {
       >
         <svg
           viewBox="0 0 100 100"
-          className="absolute inset-0 h-full w-full animate-[spin_28s_linear_infinite] fill-white"
+          className="absolute inset-0 h-full w-full fill-white"
           aria-hidden
         >
           <defs>

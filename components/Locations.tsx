@@ -1,19 +1,68 @@
-import { locations } from "@/lib/content";
+"use client";
 
-const PLACES = locations.filter((l) => l !== "Other");
+import { useEffect, useRef } from "react";
+import { stats } from "@/lib/content";
+
+/** "20+" → [20, "+"], "40%" → [40, "%"]. */
+const parsed = stats.map((s) => {
+  const m = s.value.match(/^(\d+)(.*)$/);
+  return { ...s, to: m ? Number(m[1]) : 0, suffix: m ? m[2] : s.value };
+});
 
 /**
- * "Where we work" — the south coast from the air, full-bleed, with the
- * heading bottom-left and the eight places as a quiet numbered index on
- * the right. No pins: the photograph is a mood, not a map.
+ * The south coast from the air, full-bleed, with the three numbers along the
+ * foot of the photograph. Each one counts up from zero once, the first time
+ * the row scrolls into view. No card or panel behind them: the photograph's
+ * own scrim carries the contrast.
  */
 export default function Locations() {
+  const rowRef = useRef<HTMLDListElement>(null);
+  const numRefs = useRef<(HTMLSpanElement | null)[]>([]);
+
+  useEffect(() => {
+    const row = rowRef.current;
+    if (!row) return;
+    const set = (k: number) =>
+      parsed.forEach((s, i) => {
+        const el = numRefs.current[i];
+        if (el) el.textContent = `${Math.round(s.to * k)}${s.suffix}`;
+      });
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      set(1);
+      return;
+    }
+    set(0);
+
+    let raf = 0;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting) return;
+        io.disconnect();
+        const start = performance.now();
+        const DURATION = 1600;
+        const tick = (now: number) => {
+          const t = Math.min(1, (now - start) / DURATION);
+          set(1 - Math.pow(1 - t, 3)); // ease-out
+          if (t < 1) raf = requestAnimationFrame(tick);
+        };
+        raf = requestAnimationFrame(tick);
+      },
+      { threshold: 0.4 },
+    );
+    io.observe(row);
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
     <section
       id="locations"
-      data-chapter="05"
+      data-chapter="02"
       data-tone="dark"
-      className="relative h-screen min-h-[48rem] overflow-hidden bg-forest-deep max-md:h-auto max-md:min-h-[100svh]"
+      className="relative h-screen min-h-[40rem] overflow-hidden bg-forest-deep max-md:h-auto max-md:min-h-[100svh]"
     >
       <img
         src="/brand/aerial.webp"
@@ -22,40 +71,32 @@ export default function Locations() {
         loading="lazy"
         decoding="async"
       />
-      {/* Scrims: a foot for the heading, a right-hand column for the list. */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-forest-deep/80 via-forest-deep/25 to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-[45%] bg-gradient-to-l from-forest-deep/70 via-forest-deep/20 to-transparent max-md:inset-x-0 max-md:w-auto max-md:bg-none max-md:bg-forest-deep/55" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-forest-deep/80 via-forest-deep/25 to-transparent max-md:h-[75%]" />
 
-      <div className="wrap relative flex h-full items-end justify-between gap-16 pb-14 text-white max-md:min-h-[100svh] max-md:flex-col max-md:items-start max-md:justify-end max-md:gap-10 max-md:pt-32 max-md:pb-32">
-        <div>
-          <span className="eyebrow">Where we work</span>
-          <h2 className="h-display mt-6">
-            The south coast,
-            <br />
-            <span className="accent text-gold">end to end</span>
-          </h2>
-          <p className="copy mt-8 text-white/80">
-            Villas across Sri Lanka&apos;s southern belt — close enough to be
-            there the same day, every day.
-          </p>
-        </div>
-
-        <ol className="w-[22rem] shrink-0 pb-2 max-md:w-full">
-          {PLACES.map((place, i) => (
-            <li
-              key={place}
-              className="flex items-baseline gap-5 border-t border-white/20 py-[0.85rem]"
-            >
-              <span className="w-7 text-eyebrow font-semibold tracking-[0.2em] text-gold tabular-nums">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <span className="font-display text-[1.6rem] leading-none">{place}</span>
-            </li>
+      <div className="wrap relative flex h-full items-end pb-20 text-white max-md:min-h-[100svh] max-md:pt-32 max-md:pb-28">
+        <dl
+          ref={rowRef}
+          className="grid w-full grid-cols-3 gap-10 max-md:grid-cols-1 max-md:gap-12"
+        >
+          {parsed.map((s, i) => (
+            <div key={s.label} className="flex flex-col-reverse items-center text-center">
+              <dt className="mx-auto mt-5 max-w-[13rem] text-[0.78rem] leading-[1.6] font-medium tracking-[0.18em] uppercase">
+                {s.label}
+              </dt>
+              <dd className="flex flex-col items-center">
+                <span
+                  ref={(el) => {
+                    numRefs.current[i] = el;
+                  }}
+                  className="text-[5rem] leading-none font-semibold text-gold tabular-nums drop-shadow-[0_2px_14px_rgba(0,0,0,0.35)] max-md:text-[3.4rem]"
+                >
+                  {s.value}
+                </span>
+                <span aria-hidden className="mt-5 block h-px w-10 bg-white/40" />
+              </dd>
+            </div>
           ))}
-          <li className="border-t border-white/20 pt-4 text-eyebrow font-semibold tracking-[0.3em] text-white/60 uppercase">
-            And by arrangement, elsewhere
-          </li>
-        </ol>
+        </dl>
       </div>
     </section>
   );

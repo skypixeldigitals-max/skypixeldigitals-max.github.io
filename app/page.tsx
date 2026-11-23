@@ -1,12 +1,11 @@
 import { Nav, Calculator } from "@/components/Chrome";
 import ScrollCounter from "@/components/ScrollCounter";
 import Hero from "@/components/Hero";
-import VillaJourney from "@/components/VillaJourney";
 import ServiceDetail from "@/components/ServiceDetail";
 import { PlatformBar } from "@/components/Sections";
-import { Process, Team } from "@/components/ProcessTeam";
+import { Founders, Process, Team } from "@/components/ProcessTeam";
 import Locations from "@/components/Locations";
-import { Dashboard, AlaCarte, Contact, Footer, Proof } from "@/components/Closing";
+import { Dashboard, Contact, Footer, Proof } from "@/components/Closing";
 import Veranda from "@/components/Veranda";
 
 export default function Home() {
@@ -16,16 +15,15 @@ export default function Home() {
       <ScrollCounter />
       <main id="main">
         <Hero />
-        <VillaJourney />
+        <Founders />
+        <Locations />
         <Proof />
         <Calculator />
         <PlatformBar />
         <ServiceDetail />
-        <Locations />
         <Process />
         <Team />
         <Dashboard />
-        <AlaCarte />
         <Veranda />
         <Contact />
       </main>

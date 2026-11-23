@@ -3,24 +3,33 @@ import Drift from "@/components/Drift";
 
 /**
  * "We don't just design beautiful spaces. We design spaces that rank." —
- * black-and-white photograph on the left, green panel with the four numbered
+ * the team in their Leona polos on the left (a 3:4 portrait, so the column is
+ * sized to keep it close to uncropped), green panel with the four numbered
  * steps on the right.
  */
 export function Process() {
   return (
-    <section data-chapter="06" data-tone="dark" className="bg-forest">
-      <div className="grid grid-cols-[52.4%_1fr] items-stretch max-md:grid-cols-1">
-        <img
-          loading="lazy"
-          decoding="async"
-          src="/brand/process-bw.webp"
-          alt="A Leona designer reviewing plans on site during a villa fit-out"
-          className="h-full w-full object-cover max-md:h-[70vw]"
-        />
+    <section data-chapter="05" data-tone="dark" className="bg-forest">
+      <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-stretch max-md:grid-cols-1">
+        {/* The frame keeps the photo's own tall shape (1440 × 2370), so the
+            photo sets the section's height and shows uncropped. */}
+        <div className="relative min-h-[82.3vw] max-md:aspect-[1440/2370] max-md:min-h-0">
+          <img
+            loading="lazy"
+            decoding="async"
+            src="/brand/team-leona-tops.webp"
+            alt="Two of the Leona team at work on a property, in their Powering Ceylon Stays polo shirts"
+            width={1440}
+            height={2370}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
 
-        <div className="flex flex-col justify-center px-16 py-[7.5rem] max-md:px-5 max-md:py-16">
+        <div className="flex flex-col justify-center px-16 py-16 max-md:px-5 max-md:py-16">
           <span className="eyebrow">{processSection.kicker}</span>
-          <h2 className="h-display mt-6 text-white">
+          {/* Smaller than the site's other display headings so the panel
+              fits beside the photo without cropping it. */}
+          <h2 className="h-display mt-6 text-white" style={{ fontSize: "clamp(2.3rem, 3.4vw, 3.6rem)" }}>
             We don&apos;t just design
             <br />
             beautiful spaces.
@@ -31,7 +40,7 @@ export function Process() {
           </h2>
           <p className="copy mt-7 text-white/75">{processSection.body}</p>
 
-          <ol className="mt-12 space-y-5">
+          <ol className="mt-10 space-y-4">
             {process.steps.map((s) => (
               <li key={s.number} className="group flex gap-6">
                 <span className="w-12 shrink-0 pt-1 text-lead font-semibold text-gold tabular-nums">
@@ -59,9 +68,9 @@ export function Process() {
  * lives in the artwork itself, so they're placed as drawn rather than
  * restyled in CSS.
  */
-export function Team() {
+export function Founders() {
   return (
-    <section id="team" data-chapter="07" data-tone="dark" className="bg-forest">
+    <section id="team" data-chapter="01" data-tone="dark" className="bg-forest">
       {/* ---- the founders: photograph left, story right ---- */}
       <div className="wrap section">
         <div className="grid grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] items-center gap-20 max-md:grid-cols-1 max-md:gap-10">
@@ -108,10 +117,16 @@ export function Team() {
           </div>
         </div>
       </div>
+    </section>
+  );
+}
 
-      {/* ---- the team ---- */}
-      <div className="wrap pb-[7.5rem] max-md:pb-20">
-        <div className="border-t border-white/12 pt-16 max-md:pt-12">
+/** The four people, further down the page than the founders' story. */
+export function Team() {
+  return (
+    <section id="people" data-chapter="06" data-tone="dark" className="bg-forest">
+      <div className="wrap pt-[7.5rem] pb-[7.5rem] max-md:pt-20 max-md:pb-20">
+        <div>
           <span className="eyebrow">The team</span>
           <h3 className="h-display mt-6 text-white">The people behind it</h3>
         </div>

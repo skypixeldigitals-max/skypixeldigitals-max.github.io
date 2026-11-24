@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   title: "Leona Concierge | 24/7 digital concierge for hotels, villas and tour companies in Sri Lanka",
   description:
     "Leona Concierge answers your guests' calls day and night in 6 languages, sells airport pickups and tours, and only alerts you when something really needs you. Built by a hotel and travel team on Sri Lanka's south coast.",
+  alternates: { canonical: "/concierge/" },
   openGraph: {
     title: "Leona Concierge | Your guests, answered day and night",
     description:

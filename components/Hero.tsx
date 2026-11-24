@@ -326,6 +326,7 @@ export default function Hero() {
           <h1 className="font-display text-[8.4rem] leading-[0.88] tracking-[-0.03em] uppercase drop-shadow-[0_2px_24px_rgba(0,30,70,0.35)] max-md:text-[3.9rem]">
             <span className="block">{establishing.title[0]}</span>
             <span className="block text-[0.72em]">{establishing.title[1]}</span>
+            <span className="sr-only">: villa and Airbnb management in Sri Lanka</span>
           </h1>
           <span className="font-display mt-3 text-[2.1rem] leading-none tracking-[0.06em] whitespace-nowrap text-gold uppercase drop-shadow-[0_2px_16px_rgba(0,30,70,0.35)] max-md:text-[1.15rem]">
             {establishing.script}

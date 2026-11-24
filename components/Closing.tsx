@@ -65,6 +65,9 @@ export function Dashboard() {
             <span className="eyebrow">
               Full transparency
             </span>
+            <span className="ml-3 inline-block rounded-full border border-gold-text/40 px-2.5 py-0.5 align-middle text-[0.7rem] font-semibold tracking-[0.18em] text-gold-text uppercase">
+              In beta
+            </span>
             <h2 className="h-display mt-6 text-forest">
               Villa owners,
               <br />

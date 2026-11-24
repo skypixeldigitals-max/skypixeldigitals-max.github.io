@@ -29,9 +29,9 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
-  title: "Leona Properties — Villa Care on Sri Lanka's South Coast",
+  title: "Villa & Airbnb Management in Sri Lanka | Leona Properties",
   description:
-    "Property management, interior design, listing optimisation and content for villas from Hikkaduwa to Tangalle. Ask for a free earnings estimate — we reply within 24 hours.",
+    "Villa and Airbnb management in Galle, Mirissa, Weligama and along Sri Lanka's south coast. Guests, upkeep, listings and design. Free estimate within 24 hours.",
   openGraph: {
     title: "Leona Properties — Powering Ceylon Stays",
     description:
@@ -44,18 +44,34 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
 };
 
-/** Local-business markup for Google; mirrors lib/content brand details. */
+/**
+ * Business details for Google; mirrors lib/content brand details. A service-
+ * area business: no base address, just the places Leona covers.
+ */
+const AREAS = ["Galle", "Unawatuna", "Ahangama", "Weligama", "Mirissa", "Hikkaduwa", "Tangalle", "Colombo"];
 const schema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
+  "@id": `${SITE}/#business`,
   name: "Leona Properties",
+  // Other names people search for, and the company behind the brand.
+  alternateName: ["Leona", "Leona Management", "Leona Properties Sri Lanka"],
+  legalName: "Leona Group (Pvt) Ltd",
+  slogan: "Powering Ceylon Stays",
   url: SITE,
+  logo: `${SITE}/icon.png`,
+  image: `${SITE}/opengraph-image.jpg`,
   telephone: "+94740591853",
-  email: "leonaproperties1@gmail.com",
-  areaServed: ["Galle", "Unawatuna", "Ahangama", "Weligama", "Mirissa", "Hikkaduwa", "Tangalle", "Colombo"],
-  address: { "@type": "PostalAddress", addressLocality: "Galle", addressCountry: "LK" },
-  makesOffer: ["Property management", "Interior design & architecture", "Listing optimisation", "Content creation"].map(
-    (name) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name } }),
+  email: "hello@leonamanagement.com",
+  founder: [
+    { "@type": "Person", name: "Devike" },
+    { "@type": "Person", name: "Devangi" },
+  ],
+  areaServed: [
+    ...AREAS.map((name) => ({ "@type": "City", name, containedInPlace: { "@type": "Country", name: "Sri Lanka" } })),
+  ],
+  makesOffer: ["Villa management", "Interior design & architecture", "Listing optimisation", "Content creation"].map(
+    (name) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name, areaServed: "Sri Lanka" } }),
   ),
 };
 

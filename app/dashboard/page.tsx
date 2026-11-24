@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Owner Dashboard — Leona Properties",
+  robots: { index: false, follow: true },
 };
 
 /**

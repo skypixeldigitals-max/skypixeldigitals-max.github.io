@@ -11,7 +11,7 @@ export const brand = {
   whatsapp:
     "https://wa.me/94740591853?text=" +
     encodeURIComponent("Hi Leona, I own a villa in "),
-  email: "leonaproperties1@gmail.com",
+  email: "hello@leonamanagement.com",
   responseTime: "Within 24 hours — usually faster",
 };
 
@@ -346,5 +346,41 @@ export const establishing = {
     { x: 26.5, y: 44, service: 1, note: "From first drawing to final cushion." },
     { x: 66, y: 50, service: 2, note: "Shot, written, and listed properly." },
     { x: 55.5, y: 36, service: 3, note: "Reels and stills that fill calendars." },
+  ],
+};
+
+/** Questions owners ask. Facts only: nothing here that isn't confirmed. */
+export const faq = {
+  eyebrow: "FAQ",
+  title: "Questions owners ask",
+  items: [
+    {
+      q: "What does Leona Properties do?",
+      a: "We look after villas and holiday rentals for their owners. That covers guests, housekeeping, maintenance, pricing and the booking calendar, your listings on Airbnb and Booking.com, interior design, and photos and content.",
+    },
+    {
+      q: "Which areas do you cover?",
+      a: "Galle, Unawatuna, Ahangama, Weligama, Mirissa, Hikkaduwa, Tangalle and Colombo. We can take on properties elsewhere in Sri Lanka by arrangement.",
+    },
+    {
+      q: "What kind of properties do you manage?",
+      a: "Mid-range and high-end villas, apartments, bungalows and boutique stays. We're selective about the properties we take on, but we'll look at any property and give you an honest view.",
+    },
+    {
+      q: "How much does villa management cost?",
+      a: "It depends on the property. Send us its location and we'll come back with a free estimate within 24 hours.",
+    },
+    {
+      q: "Can you manage my villa if I live abroad?",
+      a: "Yes. The day-to-day running happens while you're away, and every month you get a report showing what the villa earned and what it cost.",
+    },
+    {
+      q: "Will I be able to see how my villa is doing?",
+      a: "Every month you get a clear account of what your villa earned and what it cost. We're also building an owner dashboard with bookings, revenue and maintenance in one place. It's in beta now.",
+    },
+    {
+      q: "How do I get started?",
+      a: "Tell us where your property is and how to reach you, through the estimate form or on WhatsApp at +94 74 059 1853. We reply within 24 hours.",
+    },
   ],
 };

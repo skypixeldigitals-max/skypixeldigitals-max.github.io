@@ -20,7 +20,7 @@ const body = Montserrat({
   weight: ["300", "400", "500", "600"],
 });
 
-const SITE = "https://skypixeldigitals-max.github.io";
+const SITE = "https://leonamanagement.com";
 
 /** Phone browsers tint their address bar with this: the brand's deep forest. */
 export const viewport: Viewport = {
